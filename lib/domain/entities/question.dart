@@ -1,5 +1,5 @@
 
-class Questions {
+class Question {
     int answer;
     String category;
     String content;
@@ -7,9 +7,9 @@ class Questions {
     String id;
     int level;
     List<String> options;
-    Type type;
+    String type;
 
-    Questions({
+    Question({
         required this.answer,
         required this.category,
         required this.content,

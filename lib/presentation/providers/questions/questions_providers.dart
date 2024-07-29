@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //https://cursos.devtalles.com/courses/take/flutter-movil-cero-a-experto/lessons/42922738-nowplaying-provider-y-notifier
 
-final questionsProvider = StateNotifierProvider<QuestionsNotifier, List<Question>>((ref) {
+final getQuestionsProvider = StateNotifierProvider<QuestionsNotifier, List<Question>>((ref) {
 
   final fetchQuestions = ref.watch( questionRepositoryProvider ).getQuestions;
   return QuestionsNotifier(

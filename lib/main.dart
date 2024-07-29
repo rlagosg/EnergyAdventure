@@ -9,6 +9,15 @@ void main() {
   );
 }
 
+/* 
+  runApp(
+    ProviderScope( child: BlocProvider(
+      create: ( _ ) => GameCubit(),
+      child: const MainApp(),
+    ) )
+  );
+ */
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 

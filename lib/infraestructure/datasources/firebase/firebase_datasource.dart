@@ -15,18 +15,17 @@ class FirebaseDatasource extends QuestionsDataSource {
   @override
   Future<List<Question>> getQuestions() async {
 
-    final response = await dio.get('/questions');
-    final Map<String, dynamic> data = response.data;
+    final response = await dio.get('/questions.json');
+  
+    final List<dynamic> data = response.data;
     
-    final List<FirebaseResponse> firebaseResponses = data.entries.map((entry) {
-      return FirebaseResponse.fromJson(entry.value);
+    final List<FirebaseResponse> firebaseResponses = data.map((entry) {
+      return FirebaseResponse.fromJson(entry);
     }).toList();
 
     final List<Question> questions = firebaseResponses.map(
       (q) => QuestionMapper.firebaseQuestion(q)
     ).toList();
-
-
 
     return questions;
   }

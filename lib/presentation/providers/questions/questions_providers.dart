@@ -9,7 +9,7 @@ final getQuestionsProvider = StateNotifierProvider<QuestionsNotifier, List<Quest
 
   final fetchQuestions = ref.watch( questionRepositoryProvider ).getQuestions;
   return QuestionsNotifier(
-    fetchQuestions: fetchQuestions,
+    fetchQuestionsCallback: fetchQuestions,
   );
 });
 
@@ -18,10 +18,15 @@ typedef QuestionCallBack = Future<List<Question>> Function();
 
 class QuestionsNotifier extends StateNotifier<List<Question>> {
 
-  final QuestionCallBack fetchQuestions;
+  final QuestionCallBack fetchQuestionsCallback;
 
   QuestionsNotifier({
-    required this.fetchQuestions,
+    required this.fetchQuestionsCallback,
   }) : super([]);
+
+  Future<void> getQuestions() async {
+      final questions = await fetchQuestionsCallback();
+      state = questions;
+  }
 
 } 

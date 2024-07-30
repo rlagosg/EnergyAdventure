@@ -1,11 +1,16 @@
 import 'package:energyadventure/config/router/app_router.dart';
 import 'package:energyadventure/config/theme/app_theme.dart';
+import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
   runApp(
-    const ProviderScope( child: MainApp() )
+    ProviderScope( child: BlocProvider(
+      create: ( _ ) => GameCubit(),
+      child: const MainApp(),
+    ) )
   );
 }
 
@@ -15,6 +20,10 @@ void main() {
       create: ( _ ) => GameCubit(),
       child: const MainApp(),
     ) )
+  );
+
+  runApp(
+    const ProviderScope( child: MainApp() )
   );
  */
 

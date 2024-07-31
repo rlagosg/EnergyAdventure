@@ -21,22 +21,29 @@ class GameCubit extends Cubit<GameState> {
 
 
   Future<void> loadInitialData() async {
+
+    // Cargar primero las preguntas desde la memoria local
+    final localQuestions = await localStorageRepository.getQuestions();
+    emit(state.copyWith(questions: localQuestions));
+
     try {
+      // Intente buscar preguntas en Firebase
       final questions = await questionsRepository.getQuestions();
       await localStorageRepository.saveQuestions(questions);
       emit(state.copyWith(questions: questions));
     } catch (e) {
-      final questions = await localStorageRepository.getQuestions();
-      emit(state.copyWith(questions: questions));
+      //print('no se pudo lograr la conexion en Firebase: $e');
     }
 
-    final game = await localStorageRepository.getGameData();    
+    // Cargar los datos del juego
+    final game = await localStorageRepository.getGameData();
     emit(state.copyWith(
       maxScore: game.maxScore,
       currentScore: game.currentScore,
       canContinue: game.canContinue,
       isIntroShown: game.isIntroShown,
-    ));    
+    ));
+    
   }
 
   void setQuestions(List<Question> question) {

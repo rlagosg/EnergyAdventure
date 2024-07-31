@@ -1,6 +1,8 @@
 
 import 'package:energyadventure/domain/entities/gamedata.dart';
 import 'package:energyadventure/domain/entities/question.dart';
+import 'package:energyadventure/domain/repositories/local_storage_repository.dart';
+import 'package:energyadventure/domain/repositories/questions_repository.dart';
 import 'package:equatable/equatable.dart';
 //import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,14 +11,33 @@ part 'game_state.dart';
 
 class GameCubit extends Cubit<GameState> {
 
-  GameCubit() : super(
-    const GameState(
-      questions: [],
-      maxScore: 0,
-      currentScore: 0,
-      canContinue: false,
-      isIntroShown: false,
-  ));
+  final QuestionsRepository questionsRepository;
+  final LocalStorageRepository localStorageRepository;
+
+  GameCubit(
+    this.questionsRepository, 
+    this.localStorageRepository) :
+    super( const GameState());
+
+
+  Future<void> loadInitialData() async {
+    try {
+      final questions = await questionsRepository.getQuestions();
+      await localStorageRepository.saveQuestions(questions);
+      emit(state.copyWith(questions: questions));
+    } catch (e) {
+      final questions = await localStorageRepository.getQuestions();
+      emit(state.copyWith(questions: questions));
+    }
+
+    final game = await localStorageRepository.getGameData();    
+    emit(state.copyWith(
+      maxScore: game.maxScore,
+      currentScore: game.currentScore,
+      canContinue: game.canContinue,
+      isIntroShown: game.isIntroShown,
+    ));    
+  }
 
   void setQuestions(List<Question> question) {
     emit(state.copyWith(
@@ -55,7 +76,8 @@ class GameCubit extends Cubit<GameState> {
     currentScore: data.currentScore,
     canContinue: data.canContinue,
     isIntroShown: data.isIntroShown,
-  ));
+  ));  
+
 }
   
   //* Metodos y funciones que necesitemos a futuro

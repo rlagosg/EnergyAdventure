@@ -1,6 +1,5 @@
 import 'package:energyadventure/config/menu/menu_items.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
-import 'package:energyadventure/presentation/providers/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,24 +30,12 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   void initState() {
     super.initState();
-    ref.read( getQuestionsProvider.notifier ).getQuestions();
+    // Iniciando el manejo de la data
+    context.read<GameCubit>().loadInitialData();
   }
 
   @override
   Widget build(BuildContext context) {
-
-    //obtengo las preuntas de firebase
-    final questions = ref.watch( getQuestionsProvider );
-
-    //guardo las preguntas en mi localStorage
-    ref.watch( localStorageRespositoryProvider ).saveQuestions(questions);
-    context.read<GameCubit>().setQuestions( questions);
-
-    //guardo el estado en mi cubit
-    //final gameData = ref.watch( localStorageRespositoryProvider ).getGameData();
-    
-    //context.read<GameCubit>().setState( gameData ,questions);
-
     return ListView.builder(
       itemCount: appMenuItems.length,
       itemBuilder: (context, index) {

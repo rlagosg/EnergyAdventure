@@ -77,15 +77,14 @@ class GameCubit extends Cubit<GameState> {
   }
 
   void setState(GameData data, List<Question> questions) {
-  emit(state.copyWith(
-    questions: questions,
-    maxScore: data.maxScore,
-    currentScore: data.currentScore,
-    canContinue: data.canContinue,
-    isIntroShown: data.isIntroShown,
-  ));  
-
-}
+    emit(state.copyWith(
+      questions: questions,
+      maxScore: data.maxScore,
+      currentScore: data.currentScore,
+      canContinue: data.canContinue,
+      isIntroShown: data.isIntroShown,
+    )); 
+  }
   
   //* Metodos y funciones que necesitemos a futuro
 

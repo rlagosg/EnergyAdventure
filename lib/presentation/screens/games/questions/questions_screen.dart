@@ -1,6 +1,7 @@
-//import 'package:energyadventure/domain/entities/question.dart';
-//import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
-//import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
@@ -38,7 +39,7 @@ class _GameQuestionsView extends StatelessWidget {
       body: BlocBuilder<GameQuestionsCubit, GameQuestionsState>(
         builder: (context, state) {
           if (state.questions.isEmpty) {
-            return const Center(child: Text('No questions available'));
+            return const Center(child: Text('No se encontraron preguntas'));
           } else {
             final currentQuestion = state.questions[state.currentQuestionIndex];
             return QuestionWidget(question: currentQuestion);
@@ -50,34 +51,104 @@ class _GameQuestionsView extends StatelessWidget {
 }
 
 
-class QuestionWidget extends StatelessWidget {
+class QuestionWidget extends StatefulWidget {
   final Question question;
 
   const QuestionWidget({super.key, required this.question});
 
   @override
+  QuestionWidgetState createState() => QuestionWidgetState();
+}
+
+class QuestionWidgetState extends State<QuestionWidget> {
+  int _currentImageIndex = 1;
+  final Random _random = Random();
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController = ConfettiController(duration: const Duration(seconds: 1));
+    _changeImage();
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
+
+  void _changeImage() {
+    setState(() {
+      _currentImageIndex = _random.nextInt(6) + 1;
+    });
+  }
+
+  void _showConfetti() {
+    _confettiController.play();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Stack(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            question.content,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedSwitcher(
+              duration: const Duration(seconds: 2),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+              child: Image.asset(
+                'assets/images/$_currentImageIndex.png',
+                key: ValueKey<int>(_currentImageIndex),
+                height: 270,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Text(
+                widget.question.content,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            ...widget.question.options.map((option) => AnswerButton(
+                  option: option,
+                  onPressed: () {
+                    final isCorrect = widget.question.answer == widget.question.options.indexOf(option);
+                    context.read<GameQuestionsCubit>().answerQuestion(isCorrect);
+                    showCustomSnackbar(context, isCorrect, widget.question.explication);
+                    if (isCorrect) {
+                      _showConfetti();
+                    }
+                    Future.delayed(const Duration(seconds: 2), () {
+                      context.read<GameQuestionsCubit>().nextQuestion();
+                      _changeImage();
+                    });
+                  },
+                )),
+          ],
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: ConfettiWidget(
+            confettiController: _confettiController,
+            blastDirectionality: BlastDirectionality.explosive,
+            colors: const [
+              Colors.green,
+              Colors.blue,
+              Colors.pink,
+              Colors.orange,
+              Colors.purple
+            ],
+            shouldLoop: false,
           ),
         ),
-        ...question.options.map((option) => AnswerButton(
-              option: option,
-              onPressed: () {
-                final isCorrect = question.answer == question.options.indexOf(option);
-                context.read<GameQuestionsCubit>().answerQuestion(isCorrect);
-                showCustomSnackbar(context, isCorrect, question.explication);
-                Future.delayed(const Duration(seconds: 2), () {
-                  context.read<GameQuestionsCubit>().nextQuestion();
-                });
-              },
-            )),
       ],
     );
   }
@@ -106,7 +177,6 @@ class QuestionWidget extends StatelessWidget {
   }
 }
 
-
 class AnswerButton extends StatelessWidget {
   final String option;
   final VoidCallback onPressed;
@@ -124,3 +194,10 @@ class AnswerButton extends StatelessWidget {
     );
   }
 }
+
+/* 
+  implementar el modo:
+  - medallas y premios al final
+  - esperar a marcar la correcta con boton de siguiente
+  - crear mapa de categoria hogar / escuela &  hogar /trabajo
+*/

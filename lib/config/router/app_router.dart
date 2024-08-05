@@ -1,3 +1,4 @@
+import 'package:energyadventure/presentation/screens/games/questions/congratulations_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../presentation/screens/screens.dart';
@@ -20,6 +21,17 @@ final appRouter = GoRouter(
       path: '/questions',
       name: QuestionsScreen.name,
       builder: (context, state) => const QuestionsScreen(),
+    ),
+
+    GoRoute(
+      path: '/congratulations',
+      name: CongratulationsScreen.name,
+      builder: (context, state) => const CongratulationsScreen(),
+    ),
+    GoRoute(
+      path: '/home_questions',
+      name: HomeQuestions.name,
+      builder: (context, state) => const HomeQuestions(),
     ),
   ],
 );

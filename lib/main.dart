@@ -3,11 +3,20 @@ import 'package:energyadventure/config/theme/app_theme.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/providers/gamecubit/game_cubit_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 //integracion del provider para el gamecubit y manejo de data
 void main() {
+  
+  //*configuracion de la rotacion de pantalla, por el momento solo vertical
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(
     const ProviderScope(
       child: MyApp(),

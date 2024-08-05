@@ -32,5 +32,19 @@ const appMenuItems = <MenuItem>[
     icon: Icons.credit_card
   ),
 
+  MenuItem(
+    title: 'Felicitaciones',
+    subTitle: 'pantalla felicidades',
+    link: '/congratulations',
+    icon: Icons.golf_course_outlined
+  ),
+
+  MenuItem(
+    title: 'Menu Preguntas',
+    subTitle: 'pantalla de menu de preguntas',
+    link: '/home_questions',
+    icon: Icons.question_answer_outlined
+  ),
+
 
 ];

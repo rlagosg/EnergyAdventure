@@ -1,11 +1,12 @@
 
-import 'package:energyadventure/domain/entities/gamedata.dart';
-import 'package:energyadventure/domain/entities/question.dart';
+
 import 'package:energyadventure/domain/repositories/local_storage_repository.dart';
 import 'package:energyadventure/domain/repositories/questions_repository.dart';
 import 'package:equatable/equatable.dart';
 //import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../domain/entities/entities.dart';
 
 part 'game_state.dart';
 

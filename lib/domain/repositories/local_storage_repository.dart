@@ -1,7 +1,6 @@
 
 
-import 'package:energyadventure/domain/entities/gamedata.dart';
-import 'package:energyadventure/domain/entities/question.dart';
+import '../entities/entities.dart';
 
 abstract class LocalStorageRepository {
 

@@ -1,9 +1,10 @@
 
 import 'package:dio/dio.dart';
 import 'package:energyadventure/domain/datasources/questions_datasource.dart';
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/infraestructure/mappers/question_mapper.dart';
 import 'package:energyadventure/infraestructure/models/firebase/firebase_response.dart';
+
+import '../../../domain/entities/entities.dart';
 
 class FirebaseDatasource extends QuestionsDataSource {
 

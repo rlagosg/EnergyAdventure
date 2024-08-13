@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
+import '../../../widgets/widgets.dart';
+
 
 class HomeQuestions extends StatelessWidget {
   
@@ -14,22 +16,22 @@ class HomeQuestions extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            _MenuQuestionItem(height: size.height * 0.22, nameImage: 'tittle-gameofquestion.png',), 
-            _MenuQuestionItem(height: size.height * 0.28, nameImage: 'home-school.png',), 
-            SizedBox(height: size.height * 0.04),
-            _MenuQuestionItem(height: size.height * 0.28, nameImage: 'home-work.png',), 
-            //SizedBox( height: size.height * 0.05,),
-          ]
+        child: FadeIn(
+          child: Stack(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _MenuQuestionItem(height: size.height * 0.22, nameImage: 'tittle-gameofquestion.png',), 
+                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'home-school.png',), 
+                  SizedBox(height: size.height * 0.04),
+                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'home-work.png',), 
+                ]
+              ),
+              const HomeButton()
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          context.pop();
-        }, 
-        child: Icon(Icons.arrow_back_ios_new_outlined, size: 35, color: Colors.pinkAccent[200],),
       ),
     );
   }
@@ -51,11 +53,9 @@ class _MenuQuestionItem extends StatelessWidget {
         onPressed: () {
           // Acción al presionar el botón
         },
-        child: FadeIn(
-          child: Image.asset(
-            'assets/images/$nameImage',
-             height: height,
-          ),
+        child: Image.asset(
+          'assets/images/games/questions/$nameImage',
+           height: height,
         ),
       ),
     );

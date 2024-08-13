@@ -1,7 +1,8 @@
 
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../domain/entities/entities.dart';
 
 part 'game_questions_state.dart';
 

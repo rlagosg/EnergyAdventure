@@ -1,8 +1,8 @@
 
 import 'package:energyadventure/domain/datasources/local_storage_datasource.dart';
-import 'package:energyadventure/domain/entities/gamedata.dart';
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/domain/repositories/local_storage_repository.dart';
+
+import '../../domain/entities/entities.dart';
 
 
 

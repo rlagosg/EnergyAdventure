@@ -91,7 +91,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
           Positioned.fill(
             child: FadeIn(
               child: Image.asset(
-                'assets/images/Celebration-2.png',
+                'assets/images/games/questions/Celebration-2.png',
                 fit: BoxFit.cover,
               ),
             ),

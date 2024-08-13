@@ -1,12 +1,12 @@
 import 'dart:math';
 
 import 'package:confetti/confetti.dart';
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/questions/congratulations_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../domain/entities/entities.dart';
 import '../../../widgets/widgets.dart';
 
 class QuestionView extends StatefulWidget {

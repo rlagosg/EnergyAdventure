@@ -12,6 +12,8 @@ dependencies:
   connectivity_plus: ^6.0.4
   dio: ^5.5.0+1
   equatable: ^2.0.5
+  flame: ^1.18.0
+  flame_audio: ^2.10.2
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
@@ -31,6 +33,18 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
   assets:
     - assets/data/provitional_questions.json
     - assets/images/
+    - assets/images/
+    - assets/images/menu/
+    - assets/images/tutorials/flappy/
+    - assets/images/games/flappy/
+    - assets/images/games/questions/
+    - assets/audio/
+
+  fonts:
+    - family: Game
+      fonts:
+        - asset: assets/fonts/Game.ttf

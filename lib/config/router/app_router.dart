@@ -13,16 +13,10 @@ final appRouter = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: '/taptobulb',
-      name: TapToPulbScreen.name,
-      builder: (context, state) => const TapToPulbScreen(),
-    ),
-    GoRoute(
       path: '/questions',
       name: QuestionsScreen.name,
       builder: (context, state) => const QuestionsScreen(),
     ),
-
     GoRoute(
       path: '/congratulations',
       name: CongratulationsScreen.name,
@@ -32,6 +26,16 @@ final appRouter = GoRouter(
       path: '/home_questions',
       name: HomeQuestions.name,
       builder: (context, state) => const HomeQuestions(),
+    ),
+    GoRoute(
+      path: '/flappy_intro_screen',
+      name: FlappyIntroScreen.name,
+      builder: (context, state) => const FlappyIntroScreen(),
+    ),
+    GoRoute(
+      path: '/flappy_lobby_screen',
+      name: FlappyLobbyScreen.name,
+      builder: (context, state) => const FlappyLobbyScreen(),
     ),
   ],
 );

@@ -1,5 +1,6 @@
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/infraestructure/models/firebase/firebase_response.dart';
+
+import '../../domain/entities/entities.dart';
 
 class QuestionMapper {
 

@@ -2,13 +2,13 @@
 import 'dart:convert';
 
 import 'package:energyadventure/domain/datasources/local_storage_datasource.dart';
-import 'package:energyadventure/domain/entities/gamedata.dart';
-import 'package:energyadventure/domain/entities/question.dart';
 import 'package:energyadventure/infraestructure/mappers/question_mapper.dart';
 import 'package:energyadventure/infraestructure/models/firebase/firebase_response.dart';
 import 'package:flutter/services.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
+
+import '../../../domain/entities/entities.dart';
 
 class IsarDatasource extends LocalStorageDatasource{
 

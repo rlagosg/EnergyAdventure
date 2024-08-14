@@ -13,7 +13,7 @@ class AnswerButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: ElevatedButton(
         onPressed: onPressed,
-        child: Text(option),
+        child: Text(option, style: const TextStyle(fontFamily: 'Comic', fontSize: 16),),
       ),
     );
   }

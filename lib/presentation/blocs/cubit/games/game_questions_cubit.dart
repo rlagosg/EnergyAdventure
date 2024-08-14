@@ -47,6 +47,11 @@ class GameQuestionsCubit extends Cubit<GameQuestionsState> {
     }
   }
 
+  double calculateProgress() {
+    if (state.questions.isEmpty) return 0.0;
+    return (state.currentQuestionIndex ) / state.questions.length;
+  }
+
   void reset() {
     emit(state.copyWith(
       currentQuestionIndex: 0,

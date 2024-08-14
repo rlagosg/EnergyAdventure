@@ -1,0 +1,106 @@
+
+    {
+        "questions": [
+            {
+                "id": "1",
+                "type": "advice",
+                "content": "Para ahorrar energía debemos apagar los ____ cuando no los usamos.",
+                "options": ["autos", "bombillos", "teléfonos", "computadoras"],
+                "answer": 1,
+                "level": 1,
+                "category": "home",
+                "explication": "Apagar los bombillos cuando no los usamos ayuda a reducir el consumo de energía."
+            },
+            {
+                "id": "2",
+                "type": "pregunta",
+                "content": "¿Cuál de estos electrodomésticos consume más energía?",
+                "options": ["Refrigerador", "Microondas", "Ventilador", "Televisor"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "El refrigerador consume más energía debido a que está funcionando las 24 horas del día."
+            },
+            {
+                "id": "3",
+                "type": "advice",
+                "content": "Para ahorrar energía en la cocina, es mejor usar el ____ en lugar del horno tradicional.",
+                "options": ["microondas", "lavavajillas", "refrigerador", "licuadora"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "El microondas es más eficiente energéticamente para calentar y cocinar pequeñas cantidades de comida."
+            },
+            {
+                "id": "4",
+                "type": "pregunta",
+                "content": "¿Cuál es la mejor hora para usar la lavadora para ahorrar energía?",
+                "options": ["Mañana", "Tarde", "Noche", "Mediodía"],
+                "answer": 2,
+                "level": 2,
+                "category": "home",
+                "explication": "Usar la lavadora en la noche puede ser más económico debido a las tarifas de energía más bajas."
+            },
+            {
+                "id": "5",
+                "type": "advice",
+                "content": "Apagar y desenchufar los ____ cuando no se utilizan puede ahorrar energía.",
+                "options": ["ventiladores", "teléfonos", "electrodomésticos", "lámparas"],
+                "answer": 2,
+                "level": 1,
+                "category": "home",
+                "explication": "Desenchufar los electrodomésticos evita el consumo de energía en modo de espera."
+            },
+            {
+                "id": "6",
+                "type": "pregunta",
+                "content": "¿Qué tipo de bombilla es más eficiente energéticamente?",
+                "options": ["Incandescente", "Halógena", "LED", "Fluorescente"],
+                "answer": 2,
+                "level": 1,
+                "category": "home",
+                "explication": "Las bombillas LED son las más eficientes y tienen una mayor vida útil."
+            },
+            {
+                "id": "7",
+                "type": "advice",
+                "content": "Es recomendable ajustar el termostato a ____ grados en invierno para ahorrar energía.",
+                "options": ["18", "20", "22", "24"],
+                "answer": 1,
+                "level": 2,
+                "category": "home",
+                "explication": "Mantener el termostato a 20 grados en invierno es una temperatura confortable y eficiente energéticamente."
+            },
+            {
+                "id": "8",
+                "type": "pregunta",
+                "content": "¿Qué dispositivo consume energía incluso cuando está apagado si no se desenchufa?",
+                "options": ["Televisor", "Microondas", "Computadora", "Todos los anteriores"],
+                "answer": 3,
+                "level": 2,
+                "category": "home",
+                "explication": "Muchos dispositivos consumen energía en modo de espera, también conocido como consumo fantasma."
+            },
+            {
+                "id": "9",
+                "type": "advice",
+                "content": "Para ahorrar energía, es mejor secar la ropa al ____ en lugar de usar la secadora.",
+                "options": ["sol", "viento", "calor", "aire acondicionado"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "Secar la ropa al sol no solo ahorra energía, sino que también es más natural y saludable."
+            },
+            {
+                "id": "10",
+                "type": "pregunta",
+                "content": "¿Qué acción puede ayudar a reducir el consumo de energía en la oficina?",
+                "options": ["Usar lámparas LED", "Desenchufar equipos no usados", "Ajustar el aire acondicionado", "Todas las anteriores"],
+                "answer": 3,
+                "level": 3,
+                "category": "office",
+                "explication": "Todas estas acciones contribuyen significativamente a la reducción del consumo de energía en una oficina."
+            }
+        ]
+    }
+  

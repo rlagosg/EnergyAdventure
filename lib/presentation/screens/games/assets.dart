@@ -26,5 +26,6 @@ class Assets {
   static const play    = 'assets/images/play.png';
   static const home    = 'assets/images/home.png';
   static const exit    = 'assets/images/exit.png';
+  static const back    = 'assets/images/back.png';
 
 }

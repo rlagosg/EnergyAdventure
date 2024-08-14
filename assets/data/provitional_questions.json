@@ -13,9 +13,9 @@
             },
             {
                 "id": "2",
-                "type": "pregunta",
+                "type": "question",
                 "content": "¿Cuál de estos electrodomésticos consume más energía?",
-                "options": ["Refrigerador", "Microondas", "Ventilador", "Televisor"],
+                "options": ["Refrigerador", "Microondas", "Ventilador", "televisor"],
                 "answer": 0,
                 "level": 1,
                 "category": "home",
@@ -33,7 +33,7 @@
             },
             {
                 "id": "4",
-                "type": "pregunta",
+                "type": "question",
                 "content": "¿Cuál es la mejor hora para usar la lavadora para ahorrar energía?",
                 "options": ["Mañana", "Tarde", "Noche", "Mediodía"],
                 "answer": 2,
@@ -53,7 +53,7 @@
             },
             {
                 "id": "6",
-                "type": "pregunta",
+                "type": "question",
                 "content": "¿Qué tipo de bombilla es más eficiente energéticamente?",
                 "options": ["Incandescente", "Halógena", "LED", "Fluorescente"],
                 "answer": 2,
@@ -64,18 +64,18 @@
             {
                 "id": "7",
                 "type": "advice",
-                "content": "Es recomendable ajustar el termostato a ____ grados en invierno para ahorrar energía.",
-                "options": ["18", "20", "22", "24"],
-                "answer": 1,
-                "level": 2,
+                "content": "Para evitar el consumo de energía innecesario, en aparatos recargables es importante desenchufar los ____ cuando no se estén utilizando.",
+                "options": ["cargadores", "refrigeradores", "ventiladores", "lámparas"],
+                "answer": 0,
+                "level": 1,
                 "category": "home",
-                "explication": "Mantener el termostato a 20 grados en invierno es una temperatura confortable y eficiente energéticamente."
+                "explication": "Dejar los cargadores enchufados cuando no se están utilizando puede consumir energía en modo de espera, conocido como consumo fantasma."
             },
             {
                 "id": "8",
-                "type": "pregunta",
+                "type": "question",
                 "content": "¿Qué dispositivo consume energía incluso cuando está apagado si no se desenchufa?",
-                "options": ["Televisor", "Microondas", "Computadora", "Todos los anteriores"],
+                "options": ["televisor", "Microondas", "Computadora", "Todos los anteriores"],
                 "answer": 3,
                 "level": 2,
                 "category": "home",
@@ -93,13 +93,513 @@
             },
             {
                 "id": "10",
-                "type": "pregunta",
+                "type": "question",
                 "content": "¿Qué acción puede ayudar a reducir el consumo de energía en la oficina?",
                 "options": ["Usar lámparas LED", "Desenchufar equipos no usados", "Ajustar el aire acondicionado", "Todas las anteriores"],
                 "answer": 3,
                 "level": 3,
                 "category": "office",
                 "explication": "Todas estas acciones contribuyen significativamente a la reducción del consumo de energía en una oficina."
+            },
+            {
+                "id": "11",
+                "type": "advice",
+                "content": "Para reducir el consumo de energía, debemos mantener los ____ limpios y sin polvo.",
+                "options": ["ventiladores", "bombillos", "paneles solares", "radiadores"],
+                "answer": 1,
+                "level": 1,
+                "category": "home",
+                "explication": "Mantener los bombillos limpios ayuda a que iluminen mejor sin necesidad de usar más energía."
+            },
+            {
+                "id": "12",
+                "type": "question",
+                "content": "¿Cuál de las siguientes prácticas ayuda a reducir el consumo de energía en una oficina?",
+                "options": ["Mantener equipos en modo de espera", "Apagar computadoras al final del día", "Usar pantallas de salvapantallas animadas", "Dejar luces encendidas toda la noche"],
+                "answer": 1,
+                "level": 2,
+                "category": "office",
+                "explication": "Apagar las computadoras al final del día reduce el consumo de energía cuando no están en uso."
+            },
+            {
+                "id": "13",
+                "type": "advice",
+                "content": "Es recomendable utilizar ____ durante el día en lugar de iluminación artificial para ahorrar energía.",
+                "options": ["luz natural", "velas", "lámparas de aceite", "linternas"],
+                "answer": 0,
+                "level": 1,
+                "category": "office",
+                "explication": "Aprovechar la luz natural reduce la necesidad de iluminación artificial, disminuyendo el consumo de energía."
+            },
+            {
+                "id": "14",
+                "type": "question",
+                "content": "¿Qué aparato es más eficiente energéticamente en la cocina?",
+                "options": ["Horno de gas", "Horno eléctrico", "Microondas", "tostadora"],
+                "answer": 2,
+                "level": 2,
+                "category": "home",
+                "explication": "El microondas utiliza menos energía y es más rápido para cocinar pequeñas cantidades de comida."
+            },
+            {
+                "id": "15",
+                "type": "advice",
+                "content": "Para mejorar la eficiencia energética, es ideal instalar ____ en la oficina para controlar la temperatura.",
+                "options": ["termómetros", "termotanque", "termostatos programables", "ventiladores"],
+                "answer": 2,
+                "level": 2,
+                "category": "office",
+                "explication": "Los termostatos programables permiten ajustar la temperatura según el horario de trabajo, optimizando el uso de energía."
+            },
+            {
+                "id": "16",
+                "type": "question",
+                "content": "¿Qué hábito ayuda a reducir el consumo de energía en la escuela?",
+                "options": ["Apagar las luces al salir", "Dejar las computadoras encendidas", "Usar el aire acondicionado todo el día", "Mantener las puertas abiertas"],
+                "answer": 0,
+                "level": 1,
+                "category": "school",
+                "explication": "Apagar las luces en aulas vacías reduce el consumo innecesario de energía eléctrica en la escuela."
+            },
+            {
+                "id": "17",
+                "type": "advice",
+                "content": "Es importante cerrar las ____ cuando el aire acondicionado esté encendido para ahorrar energía.",
+                "options": ["ventanas", "puertas", "cortinas", "puertas y ventanas"],
+                "answer": 3,
+                "level": 1,
+                "category": "office",
+                "explication": "Cerrar puertas y ventanas evita que el aire frío escape, mejorando la eficiencia del aire acondicionado."
+            },
+            {
+                "id": "18",
+                "type": "question",
+                "content": "¿Cuál es la mejor opción para iluminar una casa con eficiencia energética?",
+                "options": ["Lámparas incandescentes", "Lámparas halógenas", "Lámparas fluorescentes", "Lámparas LED"],
+                "answer": 3,
+                "level": 2,
+                "category": "home",
+                "explication": "Las lámparas LED consumen menos energía y tienen una vida útil más larga que las opciones tradicionales."
+            },
+            {
+                "id": "19",
+                "type": "advice",
+                "content": "Para reducir la huella de carbono, es mejor utilizar ____ en lugar de electricidad generada por combustibles fósiles.",
+                "options": ["energía solar", "gasolina", "carbón", "petróleo"],
+                "answer": 0,
+                "level": 3,
+                "category": "home",
+                "explication": "La energía solar es renovable y limpia, ayudando a reducir la dependencia de combustibles fósiles."
+            },
+            {
+                "id": "20",
+                "type": "question",
+                "content": "¿Qué acción puede ayudar a mejorar la eficiencia energética en una industria?",
+                "options": ["Instalar paneles solares", "Desenchufar máquinas cuando no se usan", "Usar maquinaria eficiente", "Todas las anteriores"],
+                "answer": 3,
+                "level": 3,
+                "category": "office",
+                "explication": "Implementar estas prácticas contribuye a una mayor eficiencia energética en el entorno industrial."
+            },
+            {
+                "id": "21",
+                "type": "advice",
+                "content": "Para ahorrar energía en la oficina, es importante ajustar la ____ del monitor a un nivel adecuado.",
+                "options": ["brillo", "resolución", "contraste", "tamaño"],
+                "answer": 0,
+                "level": 1,
+                "category": "office",
+                "explication": "Reducir el brillo del monitor a un nivel adecuado ayuda a disminuir el consumo de energía."
+            },
+            {
+                "id": "22",
+                "type": "question",
+                "content": "¿Cuál es una práctica eficiente para el uso de aire acondicionado en la oficina?",
+                "options": ["Mantenerlo encendido todo el día", "Apagarlo durante las reuniones", "Programarlo para que funcione solo en horarios de trabajo", "Usarlo a la máxima potencia siempre"],
+                "answer": 2,
+                "level": 2,
+                "category": "office",
+                "explication": "Programar el aire acondicionado para que funcione solo durante el horario laboral ayuda a ahorrar energía."
+            },
+            {
+                "id": "23",
+                "type": "advice",
+                "content": "Para reducir el consumo de energía, es recomendable apagar las ____ al salir de la oficina.",
+                "options": ["luces", "computadoras", "impresoras", "todas las anteriores"],
+                "answer": 3,
+                "level": 1,
+                "category": "office",
+                "explication": "Apagar todos los dispositivos eléctricos al final del día reduce significativamente el consumo de energía en la oficina."
+            },
+            {
+                "id": "24",
+                "type": "question",
+                "content": "¿Qué tipo de tecnología es más eficiente para iluminar oficinas?",
+                "options": ["Lámparas incandescentes", "Lámparas fluorescentes", "Lámparas halógenas", "Lámparas LED"],
+                "answer": 3,
+                "level": 1,
+                "category": "office",
+                "explication": "Las lámparas LED son más eficientes y duraderas, lo que las hace ideales para el uso en oficinas."
+            },
+            {
+                "id": "25",
+                "type": "advice",
+                "content": "Para mejorar la eficiencia energética en la oficina, es recomendable usar ____ en lugar de impresoras individuales.",
+                "options": ["impresoras multifuncionales", "escáneres", "fotocopiadoras", "impresoras de tinta"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Las impresoras multifuncionales combinan varias funciones en un solo dispositivo, lo que reduce el consumo de energía."
+            },
+            {
+                "id": "26",
+                "type": "question",
+                "content": "¿Cuál de las siguientes acciones puede reducir el consumo de energía en la oficina?",
+                "options": ["Dejar el aire acondicionado encendido", "Usar cortinas para bloquear el sol", "Mantener la calefacción alta", "Dejar las luces encendidas"],
+                "answer": 1,
+                "level": 1,
+                "category": "office",
+                "explication": "Usar cortinas para bloquear el sol puede reducir la necesidad de aire acondicionado, ahorrando energía."
+            },
+            {
+                "id": "27",
+                "type": "advice",
+                "content": "Para ahorrar energía, es mejor utilizar ____ en lugar de pantallas de salvapantallas animadas.",
+                "options": ["modo de suspensión", "fondos de pantalla", "brillo alto", "modo de espera"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "El modo de suspensión consume menos energía que las pantallas de salvapantallas animadas."
+            },
+            {
+                "id": "28",
+                "type": "question",
+                "content": "¿Qué medida puede ayudar a reducir el consumo de energía en el equipo de oficina?",
+                "options": ["Usar equipos de bajo consumo", "Dejar los equipos encendidos durante la noche", "Imprimir todo en papel", "No apagar las luces"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Usar equipos de bajo consumo es una medida efectiva para reducir el consumo de energía en la oficina."
+            },
+            {
+                "id": "29",
+                "type": "advice",
+                "content": "Es recomendable realizar un ____ regular del equipo eléctrico para asegurar su eficiencia energética.",
+                "options": ["mantenimiento", "reinicio", "apoyo técnico", "desconexión"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "El mantenimiento regular asegura que el equipo funcione de manera óptima y eficiente en cuanto a energía."
+            },
+            {
+                "id": "30",
+                "type": "question",
+                "content": "¿Qué práctica ayuda a reducir el consumo de energía al usar computadoras en la oficina?",
+                "options": ["Desactivar el modo de suspensión", "Mantener el brillo máximo", "Cerrar aplicaciones innecesarias", "Dejarla encendida todo el día"],
+                "answer": 2,
+                "level": 1,
+                "category": "office",
+                "explication": "Cerrar aplicaciones innecesarias reduce la carga en el procesador y disminuye el consumo de energía."
+            },
+            {
+                "id": "31",
+                "type": "advice",
+                "content": "Dejar los cargadores de dispositivos móviles conectados todo el día ____ energía.",
+                "options": ["consume", "ahorra", "neutraliza", "genera"],
+                "answer": 0,
+                "level": 1,
+                "category": "office",
+                "explication": "Dejar los cargadores conectados cuando no se usan sigue consumiendo energía, lo que se conoce como consumo fantasma."
+            },
+            {
+                "id": "32",
+                "type": "question",
+                "content": "¿Cuál es la mejor práctica al utilizar cargadores de dispositivos en la oficina?",
+                "options": ["Dejar el cargador enchufado todo el día", "Desenchufar el cargador cuando no se usa", "Usar varios cargadores al mismo tiempo", "Compartir un cargador entre varios dispositivos"],
+                "answer": 1,
+                "level": 1,
+                "category": "office",
+                "explication": "Desenchufar el cargador cuando no se usa previene el consumo innecesario de energía."
+            },
+            {
+                "id": "33",
+                "type": "advice",
+                "content": "El uso de ____ en maquinaria industrial puede reducir significativamente el consumo de energía.",
+                "options": ["motores eficientes", "luces incandescentes", "generadores antiguos", "bombas de calor"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Los motores eficientes están diseñados para consumir menos energía mientras mantienen un alto rendimiento."
+            },
+            {
+                "id": "34",
+                "type": "question",
+                "content": "¿Cuál es una práctica ineficiente que debe evitarse en la industria para ahorrar energía?",
+                "options": ["Mantener maquinaria encendida cuando no se usa", "Usar motores de alta eficiencia", "Realizar mantenimientos regulares", "Apagar equipos cuando no están en uso"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Mantener maquinaria encendida sin necesidad incrementa el consumo de energía innecesariamente."
+            },
+            {
+                "id": "35",
+                "type": "advice",
+                "content": "Para reducir el consumo de energía, se recomienda utilizar ____ en lugar de motores viejos en la industria.",
+                "options": ["motores de alta eficiencia", "generadores manuales", "bombas de agua antiguas", "compresores obsoletos"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Los motores de alta eficiencia son más efectivos en convertir energía en trabajo, reduciendo el desperdicio de energía."
+            },
+            {
+                "id": "36",
+                "type": "question",
+                "content": "¿Qué medida puede ayudar a reducir el consumo de energía en una planta industrial?",
+                "options": ["Apagar las luces durante el día", "Usar maquinaria antigua", "Mantener todas las máquinas encendidas", "Actualizar a equipos energéticamente eficientes"],
+                "answer": 3,
+                "level": 2,
+                "category": "office",
+                "explication": "Actualizar a equipos energéticamente eficientes puede reducir significativamente el consumo de energía en la industria."
+            },
+            {
+                "id": "37",
+                "type": "advice",
+                "content": "En la oficina, es recomendable usar ____ para cargar dispositivos de manera eficiente.",
+                "options": ["cargadores inteligentes", "múltiples cargadores", "cargadores antiguos", "baterías portátiles"],
+                "answer": 0,
+                "level": 1,
+                "category": "office",
+                "explication": "Los cargadores inteligentes optimizan el uso de energía al detener la carga cuando la batería está completa."
+            },
+            {
+                "id": "38",
+                "type": "question",
+                "content": "¿Qué práctica contribuye al mal uso de la energía en la industria?",
+                "options": ["Realizar mantenimientos preventivos", "Usar iluminación LED", "Dejar la maquinaria encendida todo el día", "Actualizar equipos regularmente"],
+                "answer": 2,
+                "level": 2,
+                "category": "office",
+                "explication": "Dejar la maquinaria encendida innecesariamente aumenta el consumo de energía y los costos operativos."
+            },
+            {
+                "id": "39",
+                "type": "advice",
+                "content": "Para maximizar la eficiencia energética, es importante ____ cuando las máquinas no están en uso.",
+                "options": ["apagar las máquinas", "aumentar la velocidad", "mantenerlas en espera", "reducir la carga"],
+                "answer": 0,
+                "level": 2,
+                "category": "office",
+                "explication": "Apagar las máquinas cuando no están en uso es clave para reducir el consumo de energía en la industria."
+            },
+            {
+                "id": "40",
+                "type": "question",
+                "content": "¿Cuál es una acción eficiente para reducir el consumo de energía al cargar dispositivos móviles en la oficina?",
+                "options": ["Usar un solo cargador para todos los dispositivos", "Dejar el cargador conectado toda la noche", "Desenchufar el cargador después de cargar", "Usar cargadores de baja calidad"],
+                "answer": 2,
+                "level": 1,
+                "category": "office",
+                "explication": "Desenchufar el cargador después de cargar evita el consumo de energía innecesario y prolonga la vida útil del cargador."
+            },
+            {
+                "id": "41",
+                "type": "advice",
+                "content": "Para reducir el consumo de energía en casa, es recomendable ____ los electrodomésticos cuando no se utilizan.",
+                "options": ["apagar", "dejar encendidos", "reiniciar", "reemplazar"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "Apagar los electrodomésticos cuando no se utilizan evita el consumo innecesario de energía."
+            },
+            {
+                "id": "42",
+                "type": "question",
+                "content": "¿Cuál de estos hábitos contribuye al ahorro de energía en el hogar?",
+                "options": ["Usar bombillas LED", "Dejar luces encendidas", "Mantener electrodomésticos en espera", "Calentar la casa con puertas abiertas"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "Usar bombillas LED consume menos energía y reduce el costo de la electricidad en el hogar."
+            },
+            {
+                "id": "43",
+                "type": "question",
+                "content": "¿Qué acción es más eficiente energéticamente en una sala de computación?",
+                "options": ["Apagar los monitores cuando no se usan", "Dejar los monitores en modo de espera", "Mantener los monitores encendidos todo el día", "Reducir el brillo de los monitores"],
+                "answer": 0,
+                "level": 2,
+                "category": "school",
+                "explication": "Apagar los monitores cuando no se utilizan reduce significativamente el consumo de energía en una sala de computación."
+            },
+            {
+                "id": "44",
+                "type": "advice",
+                "content": "Para mejorar la eficiencia energética en la escuela, es importante desenchufar los ____ cuando no están en uso.",
+                "options": ["cargadores", "pizarras electrónicas", "proyectores", "computadoras"],
+                "answer": 0,
+                "level": 2,
+                "category": "school",
+                "explication": "Dejar los cargadores enchufados consume energía incluso cuando no están cargando dispositivos, lo que se conoce como consumo fantasma."
+            },
+            {
+                "id": "45",
+                "type": "question",
+                "content": "¿Cuál es la manera más eficiente de utilizar el aire acondicionado en el hogar?",
+                "options": ["Mantenerlo encendido todo el día", "Encenderlo solo cuando es necesario", "Ajustarlo a la temperatura más baja", "Usar varios aparatos a la vez"],
+                "answer": 1,
+                "level": 2,
+                "category": "home",
+                "explication": "Encender el aire acondicionado solo cuando es necesario evita el consumo excesivo de energía."
+            },
+            {
+                "id": "46",
+                "type": "advice",
+                "content": "Para ahorrar energía al lavar la ropa, es mejor usar el agua ____ en lugar de agua caliente.",
+                "options": ["fría", "tibia", "caliente", "templada"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "Usar agua fría para lavar la ropa consume menos energía y es igual de efectivo para la mayoría de las cargas."
+            },
+            {
+                "id": "47",
+                "type": "question",
+                "content": "¿Cuál de estos aparatos debería desenchufarse para evitar el consumo de energía en modo de espera?",
+                "options": ["televisor", "Microondas", "Computadora", "Todos los anteriores"],
+                "answer": 3,
+                "level": 1,
+                "category": "home",
+                "explication": "Todos estos aparatos consumen energía en modo de espera, lo que puede sumar en el consumo total."
+            },
+            {
+                "id": "48",
+                "type": "advice",
+                "content": "Para maximizar la eficiencia energética en la cocina, es recomendable utilizar ____ para calentar alimentos.",
+                "options": ["el microondas", "la estufa eléctrica", "el horno", "la parrilla"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "El microondas utiliza menos energía para calentar pequeñas porciones de comida en comparación con la estufa o el horno."
+            },
+            {
+                "id": "49",
+                "type": "question",
+                "content": "¿Qué acción puede ayudar a reducir el consumo de energía al usar el refrigerador en casa?",
+                "options": ["Mantener la puerta abierta", "Descongelar el refrigerador regularmente", "Colocar comida caliente en su interior", "Sobrellenar el refrigerador"],
+                "answer": 1,
+                "level": 2,
+                "category": "home",
+                "explication": "Descongelar el refrigerador regularmente mejora su eficiencia y reduce el consumo de energía."
+            },
+            {
+                "id": "50",
+                "type": "advice",
+                "content": "Para ahorrar energía, es recomendable ajustar las ____ de los aparatos a los niveles adecuados.",
+                "options": ["configuraciones", "velocidades", "dimensiones", "frecuencias"],
+                "answer": 0,
+                "level": 2,
+                "category": "home",
+                "explication": "Ajustar las configuraciones de los aparatos a niveles óptimos ayuda a reducir el consumo de energía."
+            },
+            {
+                "id": "51",
+                "type": "question",
+                "content": "¿Qué tipo de electrodoméstico debería usarse durante las horas no pico para ahorrar energía?",
+                "options": ["lavadora", "televisor", "tostadora", "licuadora"],
+                "answer": 0,
+                "level": 2,
+                "category": "home",
+                "explication": "Usar la lavadora durante las horas no pico puede ser más económico y eficiente energéticamente."
+            },
+            {
+                "id": "52",
+                "type": "advice",
+                "content": "Desconectar la ____ cuando no se está usando puede reducir el consumo de energía en el hogar.",
+                "options": ["plancha", "radio", "lavadora", "tostadora"],
+                "answer": 0,
+                "level": 1,
+                "category": "home",
+                "explication": "Las planchas consumen mucha energía y pueden ser peligrosas si se dejan conectadas innecesariamente."
+            },
+            {
+                "id": "53",
+                "type": "advice",
+                "content": "Para reducir el consumo de energía en el aula, es importante apagar las ____ cuando hay suficiente luz natural.",
+                "options": ["luces", "computadoras", "ventiladores", "pizarras electrónicas"],
+                "answer": 0,
+                "level": 1,
+                "category": "school",
+                "explication": "Aprovechar la luz natural en el aula puede ayudar a reducir el uso innecesario de electricidad."
+            },
+            {
+                "id": "54",
+                "type": "question",
+                "content": "¿Cuál de estos dispositivos debe apagarse cuando no está en uso para ahorrar energía en la escuela?",
+                "options": ["Proyector", "Ventilador", "Computadora", "Todos los anteriores"],
+                "answer": 3,
+                "level": 2,
+                "category": "school",
+                "explication": "Todos estos dispositivos consumen energía y deben apagarse cuando no se necesitan."
+            },
+            {
+                "id": "55",
+                "type": "advice",
+                "content": "Usar ____ en lugar de encender las luces del aula puede ser una forma efectiva de ahorrar energía.",
+                "options": ["persianas", "lámparas LED", "luz natural", "linternas"],
+                "answer": 2,
+                "level": 1,
+                "category": "school",
+                "explication": "La luz natural es gratuita y abundante, lo que la convierte en una opción excelente para ahorrar energía."
+            },
+            {
+                "id": "56",
+                "type": "question",
+                "content": "¿Qué acción puede ayudar a reducir el consumo de energía en una universidad?",
+                "options": ["Cerrar las ventanas cuando el aire acondicionado está encendido", "Desconectar los cargadores de los dispositivos", "Apagar los equipos de laboratorio cuando no se usan", "Todas las anteriores"],
+                "answer": 3,
+                "level": 2,
+                "category": "school",
+                "explication": "Todas estas acciones contribuyen significativamente a la reducción del consumo de energía en una universidad."
+            },
+            {
+                "id": "57",
+                "type": "advice",
+                "content": "Para ahorrar energía en el laboratorio, es crucial apagar las ____ al final de la jornada.",
+                "options": ["luces", "computadoras", "máquinas de ensayo", "todas las anteriores"],
+                "answer": 3,
+                "level": 2,
+                "category": "school",
+                "explication": "Desconectar los equipos del laboratorio cuando no están en uso evita el consumo innecesario de energía."
+            },
+            {
+                "id": "58",
+                "type": "question",
+                "content": "¿Cuál es una buena práctica para reducir el consumo de energía en la biblioteca de una escuela?",
+                "options": ["Usar lámparas LED", "Desconectar las computadoras al final del día", "Reducir el brillo de las pantallas", "Todas las anteriores"],
+                "answer": 3,
+                "level": 3,
+                "category": "school",
+                "explication": "Implementar estas prácticas en la biblioteca puede reducir significativamente el consumo de energía."
+            },
+            {
+                "id": "59",
+                "type": "advice",
+                "content": "Para ahorrar energía en las aulas, es recomendable programar los ____ para que se apaguen automáticamente fuera del horario escolar.",
+                "options": ["ventiladores", "proyectores", "aire acondicionado", "computadoras"],
+                "answer": 3,
+                "level": 2,
+                "category": "school",
+                "explication": "Programar las computadoras para que se apaguen automáticamente fuera del horario escolar ayuda a reducir el consumo de energía."
+            },
+            {
+                "id": "60",
+                "type": "question",
+                "content": "¿Qué tecnología de iluminación es más eficiente para su uso en una escuela?",
+                "options": ["Incandescente", "Halógena", "LED", "Fluorescente"],
+                "answer": 2,
+                "level": 1,
+                "category": "school",
+                "explication": "Las bombillas LED son las más eficientes y tienen una mayor vida útil, lo que las convierte en la mejor opción para las escuelas."
             }
         ]
     }

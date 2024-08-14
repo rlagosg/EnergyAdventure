@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../domain/entities/entities.dart';
+import '../../../components/components.dart';
 import '../../../widgets/widgets.dart';
 
 class QuestionView extends StatefulWidget {
@@ -50,9 +51,10 @@ class QuestionViewState extends State<QuestionView> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        const ProgressBar(),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: [            
             AnimatedSwitcher(
               duration: const Duration(seconds: 2),
               transitionBuilder: (Widget child, Animation<double> animation) {
@@ -72,7 +74,7 @@ class QuestionViewState extends State<QuestionView> {
               padding: const EdgeInsets.all(40.0),
               child: Text(
                 widget.question.content,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Comic'),
               ),
             ),
             ...widget.question.options.map((option) => AnswerButton(

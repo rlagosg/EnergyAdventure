@@ -33,7 +33,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - assets/data/provitional_questions.json
     - assets/images/
@@ -48,3 +48,7 @@ flutter:
     - family: Game
       fonts:
         - asset: assets/fonts/Game.ttf
+    
+    - family: Comic
+      fonts:
+        - asset: assets/fonts/Comic.ttf

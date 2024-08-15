@@ -1,0 +1,13 @@
+- pantalla modal: “Aprende viendo, aprende jugando”
+- boton salir del juego
+- boton pausa del juego
+
+opcional:
+mensajes personalizados al final de cada juego
+mensaje personalizado en la pantalla modal
+sonido a respuesta incorrecta y correcta
+agregar mas bombillos y puntaje en niveles
+agregar id opcional para saber si el json ha realizado algun cambio y no este actualizando la base
+de datos todo el tiempo
+
+

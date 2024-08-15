@@ -20,17 +20,22 @@ class GameOverScreen extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+
+              Image.asset(Assets.gameOver, width: size.width * 0.80,),
+              SizedBox(height: size.height * 0.07),
+
+              Image.asset('assets/images/games/flappy/bulbOn.png', width: size.width * 0.09,),              
+              SizedBox(height: size.height * 0.01),
               Text(
-                'puntaje: ${game.bird.score}',
+                'APAGASTE: ${game.bird.score}',
                 style: const TextStyle(
-                  fontSize: 60,
+                  fontSize: 50,
                   color: Colors.amberAccent,
                   fontFamily: 'Game',
                 ),
               ),
-              const SizedBox(height: 20),
-              Image.asset(Assets.gameOver, width: size.width * 0.75,),
-              const SizedBox(height: 20),
+                           
+              SizedBox(height: size.height * 0.05),
               ElevatedButton(
                 onPressed: onRestart,
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),

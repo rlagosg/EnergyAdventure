@@ -48,11 +48,11 @@ class HomeQuestions extends StatelessWidget {
                   ),
                 ]
               ),
-              HomeButton(replacement: replacement)
             ],
           ),
         ),
       ),
+      floatingActionButton: HomeButton(replacement: replacement),
     );
   }
 }

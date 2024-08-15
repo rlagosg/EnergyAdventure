@@ -39,7 +39,7 @@ class FlappyScreen extends StatelessWidget {
             height: size.height * 0.25, // Ajusta el alto de la imagen
             child: Image.asset(
               Assets.play,
-              fit: BoxFit.cover, // Mantén la imagen con su tamaño original
+              fit: BoxFit.cover, // magen con su tamaño original
             ),
           ),
         ),

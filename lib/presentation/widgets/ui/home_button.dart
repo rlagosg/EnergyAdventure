@@ -13,13 +13,9 @@ class HomeButton extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
 
-    return  Positioned(
-      bottom: 15,
-      right: 15,
-      child: TextButton(
-        child: Image.asset( Assets.home, height: size.height * 0.07,),
-        onPressed: () { replacement == true ? context.pushReplacement('/') : context.pop(); }
-      ),          
+    return  TextButton(
+      child: Image.asset( Assets.home, height: size.height * 0.07,),
+      onPressed: () { replacement == true ? context.pushReplacement('/') : context.pop(); }          
     );
   }
 }

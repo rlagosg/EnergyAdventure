@@ -3,6 +3,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../widgets/ui/ui.dart';
 import '../assets.dart';
 
 
@@ -85,7 +86,7 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
               ),
             ) : const SizedBox(),
             endReached ? Positioned(
-              left: size.width * 0.01,
+              left: size.width * 0.03,
               top: size.height * 0.11,
               child: FadeInLeft(
                 from: 15,
@@ -96,14 +97,6 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
                 ),
               ),
             ): const SizedBox(),
-            Positioned(
-              bottom: 35,
-              right: 30,
-              child: TextButton(
-                child: Image.asset( Assets.home, height: size.height * 0.07,),
-                onPressed: () { context.pop();}
-              ),          
-            ),
              Positioned(
                bottom: 30,
                left: size.width * 0.35,
@@ -112,7 +105,8 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
         
           ],
         ),
-      )
+      ),
+      floatingActionButton: const HomeButton(),
     );
   }
 }

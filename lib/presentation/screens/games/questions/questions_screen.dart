@@ -63,10 +63,11 @@ class _GameQuestionsViewState extends State<_GameQuestionsView> {
                 }
               },
             ),
-            const MyBackButton(),
+            //const MyBackButton(),
           ],
         ),
       ),
+      floatingActionButton: const MyBackButton()
     );
   }
 }

@@ -13,13 +13,10 @@ class MyBackButton extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
 
-    return  Positioned(
-      bottom: 15,
-      right: 15,
-      child: TextButton(
-        child: Image.asset( Assets.back, height: size.height * 0.06,),
-        onPressed: () { replacement != '' ? context.replaceNamed(replacement ?? '/') : context.pop(); }
-      ),          
+    return 
+      TextButton(
+        child: Image.asset( Assets.back, height: size.height * 0.07,),
+        onPressed: () { replacement != '' ? context.replaceNamed(replacement ?? '/') : context.pop(); }          
     );
   }
 }

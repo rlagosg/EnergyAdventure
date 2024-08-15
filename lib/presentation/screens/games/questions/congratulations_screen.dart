@@ -4,7 +4,9 @@ import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:confetti/confetti.dart';
+import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class CongratulationsScreen extends StatefulWidget {
@@ -27,6 +29,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
     _confettiController1.play();
     _confettiController2.play();
     _confettiController3.play();
+
     Future.delayed(const Duration(seconds: 3), () {
       _showCongratulationsDialog();
     });
@@ -56,7 +59,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
               child: const Text('Volver al inicio'),
               onPressed: () {
                 Navigator.of(context).pop(); // Cierra el diálogo
-                context.go('/'); // Redirige a la pantalla de inicio usando GoRouter
+                context.go('/home_questions'); // Redirige a la pantalla de inicio usando GoRouter
               },
             ),
           ],
@@ -85,6 +88,10 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    //setiamos el replacemet del home
+    context.read<GameCubit>().setReplacementHome(true);
+
     return Scaffold(
       body: Stack(
         children: [

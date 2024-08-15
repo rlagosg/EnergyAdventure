@@ -9,6 +9,8 @@ class GameState extends Equatable{
   final bool isIntroShown;
   final String currentCategory;
 
+  final bool replacementHome;
+
   const GameState({
     this.id = 1,
     this.questions = const [],
@@ -17,6 +19,7 @@ class GameState extends Equatable{
     this.canContinue = false,
     this.isIntroShown = false,
     this.currentCategory = CategoryQuest.home,
+    this.replacementHome = false,
   });
 
   copyWith({
@@ -26,6 +29,8 @@ class GameState extends Equatable{
     bool? canContinue,
     bool? isIntroShown,
     String? currentCategory,
+
+    bool? replacementHome,
   }) => GameState(
       questions: questions ?? this.questions,
       maxScore: maxScore ?? this.maxScore,
@@ -33,9 +38,19 @@ class GameState extends Equatable{
       canContinue: canContinue ?? this.canContinue,
       isIntroShown: isIntroShown ?? this.isIntroShown,
       currentCategory: currentCategory ?? this.currentCategory,
+      replacementHome: replacementHome ?? this.replacementHome,
   );
 
   @override
-  List<Object> get props => [id];
+  List<Object> get props => [
+    id,
+    questions,
+    maxScore,
+    currentScore,
+    canContinue,
+    isIntroShown,
+    currentCategory,
+    replacementHome,
+  ];
 }
 

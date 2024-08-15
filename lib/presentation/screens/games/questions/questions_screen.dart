@@ -1,4 +1,3 @@
-
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
@@ -29,24 +28,31 @@ class QuestionsScreen extends StatelessWidget {
   }
 }
 
-class _GameQuestionsView extends StatelessWidget {
+class _GameQuestionsView extends StatefulWidget {
 
   final String category;
   const _GameQuestionsView(this.category);
 
   @override
+  State<_GameQuestionsView> createState() => _GameQuestionsViewState();
+}
+
+class _GameQuestionsViewState extends State<_GameQuestionsView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final questions = context.read<GameCubit>().getQuestionByCategory(widget.category);
+      context.read<GameQuestionsCubit>().setQuestions(questions);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-    //llamamos la categoria seleccionada
-    final questions = context.read<GameCubit>().getQuestionByCategory(category);
-    //final cat = context.read<GameCubit>().state.currentCategory;
-    context.watch<GameQuestionsCubit>().setQuestions(questions);
-
     return Scaffold(
       body: FadeIn(
         child: Stack(
-          children: 
-          [
+          children: [
             BlocBuilder<GameQuestionsCubit, GameQuestionsState>(
               builder: (context, state) {
                 if (state.questions.isEmpty) {
@@ -58,7 +64,7 @@ class _GameQuestionsView extends StatelessWidget {
               },
             ),
             const MyBackButton(),
-          ]
+          ],
         ),
       ),
     );

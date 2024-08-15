@@ -20,7 +20,8 @@ class ProgressBar extends StatelessWidget {
           SizedBox(height: 50),
           Text('Preguntas Completadas', style: TextStyle(
             fontFamily: 'Comic', 
-            fontSize: 20
+            fontSize: 20,
+            color: Color.fromARGB(255, 59, 31, 108)
           ),),
           SizedBox(height: 20),
           ControlledProgresIndicator()

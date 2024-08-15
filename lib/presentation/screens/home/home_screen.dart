@@ -32,7 +32,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   void initState() {
     super.initState();
-    // Iniciando el manejo de la data
+        // Iniciando el manejo de la data
     context.read<GameCubit>().loadInitialData();
   }
 
@@ -40,7 +40,7 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
-
+    
     return Center(
         child: FadeIn(
           child: Stack(

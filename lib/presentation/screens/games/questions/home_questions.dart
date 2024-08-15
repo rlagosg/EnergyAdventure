@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/domain/entities/entities.dart';
+import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../widgets/widgets.dart';
@@ -8,13 +10,14 @@ import '../../../widgets/widgets.dart';
 
 class HomeQuestions extends StatelessWidget {
   
-  static const name = 'home_questions';
+  static const name = 'home_questions';  
   const HomeQuestions({super.key});
 
   @override
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+    final replacement = context.watch<GameCubit>().state.replacementHome;
 
     return Scaffold(
       body: Center(
@@ -45,7 +48,7 @@ class HomeQuestions extends StatelessWidget {
                   ),
                 ]
               ),
-              const HomeButton()
+              HomeButton(replacement: replacement)
             ],
           ),
         ),

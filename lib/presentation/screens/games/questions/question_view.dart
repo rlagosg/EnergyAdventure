@@ -1,10 +1,11 @@
 import 'dart:math';
 
+import 'package:animate_do/animate_do.dart';
 import 'package:confetti/confetti.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
-import 'package:energyadventure/presentation/screens/games/questions/congratulations_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../domain/entities/entities.dart';
 import '../../../components/components.dart';
@@ -49,12 +50,51 @@ class QuestionViewState extends State<QuestionView> {
 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+    final isFinal = context.read<GameQuestionsCubit>().state.currentQuestionIndex == context.read<GameQuestionsCubit>().state.questions.length - 1;
+
+    void showCustomSnackbar(BuildContext context, bool isCorrect, String explanation) {
+
+    // SnakBar
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(isCorrect ? 'Correcto' : 'Incorrecto'),
+      backgroundColor: isCorrect ? Colors.green : Colors.red,
+      duration: const Duration(seconds: 1),
+    ));
+
+    // Modal
+    Future.delayed(const Duration(seconds: 1), () {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(isCorrect ? 'Bien Hecho' : "Vamos a intentarlo de nuevo\n¡tú puedes!"),
+          content: Text(isCorrect ? explanation : 'Recuerda... $explanation'),
+          actions: [
+            TextButton(
+              onPressed: () { 
+                Navigator.of(context).pop();
+                if (isCorrect & isFinal){
+                  context.pushReplacement('/congratulations');
+                }
+              },
+              child: const Text('Aceptar'),
+            ),
+          ],
+        ),
+      );
+    });
+    
+  }
+
     return Stack(
       children: [
         const ProgressBar(),
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [            
+          children: [
+            
+            // Imagen            
             AnimatedSwitcher(
               duration: const Duration(seconds: 2),
               transitionBuilder: (Widget child, Animation<double> animation) {
@@ -66,65 +106,44 @@ class QuestionViewState extends State<QuestionView> {
               child: Image.asset(
                 'assets/images/$_currentImageIndex.png',
                 key: ValueKey<int>(_currentImageIndex),
-                height: 270,
+                height: size.height * 0.20,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 1),
+
+            // Pregunta
             Padding(
-              padding: const EdgeInsets.all(40.0),
-              child: Text(
-                widget.question.content,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Comic'),
+              padding: const EdgeInsets.only(bottom: 40.0, left: 40, right: 40, top: 20),
+              child: FadeIn(
+                child: Text(
+                  widget.question.content,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, fontFamily: 'Comic'),
+                ),
               ),
             ),
+
+            // Respuestas
             ...widget.question.options.map((option) => AnswerButton(
-                  option: option,
-                  onPressed: () {
-                    final isCorrect = widget.question.answer == widget.question.options.indexOf(option);
-                    context.read<GameQuestionsCubit>().answerQuestion(isCorrect);
-                    showCustomSnackbar(context, isCorrect, widget.question.explication);
-                    if (isCorrect) {
-                      _showConfetti();
-                      Future.delayed(const Duration(seconds: 2), () {
-                        if (context.read<GameQuestionsCubit>().state.currentQuestionIndex == context.read<GameQuestionsCubit>().state.questions.length - 1) {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => const CongratulationsScreen()),
-                          );
-                        } else {
-                          context.read<GameQuestionsCubit>().nextQuestion();
-                          _changeImage();
-                        }
-                      });
+              option: option,
+              onPressed: () {
+                final isCorrect = widget.question.answer == widget.question.options.indexOf(option);
+                context.read<GameQuestionsCubit>().answerQuestion(isCorrect);
+                showCustomSnackbar(context, isCorrect, widget.question.explication);
+                if (isCorrect) {
+                  _showConfetti();
+                  Future.delayed(const Duration(seconds: 2), () {
+                    if (!isFinal) {
+                      context.read<GameQuestionsCubit>().nextQuestion();
+                      _changeImage();
                     }
-                  },
-                )),
+                  });
+                }
+              },
+            )),
           ],
         ),
         ShowConfetti(confettiController: _confettiController),
       ],
     );
-  }
-
-  void showCustomSnackbar(BuildContext context, bool isCorrect, String explanation) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(isCorrect ? 'Correcto' : 'Incorrecto'),
-      backgroundColor: isCorrect ? Colors.green : Colors.red,
-      duration: const Duration(seconds: 1),
-    ));
-    Future.delayed(const Duration(seconds: 1), () {
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(isCorrect ? 'Bien Hecho' : "Vamos a intentarlo de nuevo\n¡tú puedes!"),
-          content: Text(isCorrect ? explanation : 'Recuerda... $explanation'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Aceptar'),
-            ),
-          ],
-        ),
-      );
-    });
   }
 }

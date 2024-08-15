@@ -1,5 +1,7 @@
 
 
+import 'dart:math';
+
 import 'package:energyadventure/domain/repositories/local_storage_repository.dart';
 import 'package:energyadventure/domain/repositories/questions_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -45,6 +47,8 @@ class GameCubit extends Cubit<GameState> {
       currentScore: game.currentScore,
       canContinue: game.canContinue,
       isIntroShown: game.isIntroShown,
+
+      replacementHome: false
     ));
     
   }
@@ -92,10 +96,12 @@ class GameCubit extends Cubit<GameState> {
   void setCurrentCategory( String category){
     emit(state.copyWith(currentCategory: category));
   }  
+
+  void setReplacementHome(bool replacement) {// Debugging
+    emit(state.copyWith(replacementHome: replacement));
+  } 
   
   List<Question> getQuestionByCategory(String category) {
-
-    //final random = Random();
 
     final categoryFilters = {
       CategoryQuest.office: [CategoryQuest.office, CategoryQuest.home],
@@ -107,13 +113,31 @@ class GameCubit extends Cubit<GameState> {
     
     if (filters != null) {
       var questions = state.questions.where((question) => filters.contains(question.category)).toList();
-      //questions = questions..shuffle(random);
-      questions = questions.take(10).toList();
-      return questions;
-
+      return filterQuestions(questions);
     } else {
       return state.questions.toList();
     }
+  }
+
+  List<Question> filterQuestions(List<Question> questions) {
+    
+    List<Question> selecteds = [];
+    var random = Random();
+
+    // Limita la cantidad de preguntas a seleccionar a la cantidad disponible
+    int maxQuestions = questions.length < 10 ? questions.length : 10;
+
+    while (selecteds.length < maxQuestions) {
+      var number = random.nextInt(questions.length); // Genera un número entre 0 y questions.length - 1
+      var question = questions[number];
+      //print(number); // Esto es solo para depuración, puedes removerlo si no lo necesitas
+
+      if (!selecteds.contains(question)) {
+        selecteds.add(question);
+      }
+    }
+
+    return selecteds;
   }
 
   //* Metodos y funciones que necesitemos a futuro

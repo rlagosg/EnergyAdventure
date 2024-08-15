@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class MyBackButton extends StatelessWidget {
-  const MyBackButton({super.key});
+
+  final String? replacement;
+
+  const MyBackButton({super.key, this.replacement = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class MyBackButton extends StatelessWidget {
       right: 15,
       child: TextButton(
         child: Image.asset( Assets.back, height: size.height * 0.06,),
-        onPressed: () { context.pop(); }
+        onPressed: () { replacement != '' ? context.replaceNamed(replacement ?? '/') : context.pop(); }
       ),          
     );
   }

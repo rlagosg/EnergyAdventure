@@ -2,6 +2,8 @@ import 'package:energyadventure/domain/entities/flappy_game/flappy_bird_game.dar
 import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:flutter/material.dart';
 
+import '../../../widgets/ui/ui.dart';
+
 
 class FlappyScreen extends StatelessWidget {
   final FlappyBirdGame game;
@@ -45,6 +47,7 @@ class FlappyScreen extends StatelessWidget {
         ),
       ),
       ),
+      floatingActionButton: const MyBackButton(),
     );
   }
 }

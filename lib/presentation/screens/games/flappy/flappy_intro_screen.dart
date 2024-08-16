@@ -74,7 +74,7 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
         
             endReached ? 
             Positioned(
-              right: size.width * 0.03,
+              right: size.width * 0.01,
               top:  size.height * 0.04,
               child: FadeInRight(
                 from: 15,
@@ -86,7 +86,7 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
               ),
             ) : const SizedBox(),
             endReached ? Positioned(
-              left: size.width * 0.03,
+              left: size.width * 0.02,
               top: size.height * 0.11,
               child: FadeInLeft(
                 from: 15,

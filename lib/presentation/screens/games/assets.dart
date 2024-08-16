@@ -28,4 +28,7 @@ class Assets {
   static const exit    = 'assets/images/exit.png';
   static const back    = 'assets/images/back.png';
 
+  static const information  = 'assets/images/information.png';
+
+
 }

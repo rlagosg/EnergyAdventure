@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 //import 'package:energyadventure/config/menu/menu_items.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
-import 'package:energyadventure/presentation/widgets/ui/exit_button.dart';
+import 'package:energyadventure/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,7 +50,9 @@ class _HomeViewState extends ConsumerState<_HomeView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox( height: size.height * 0.03),
-                  _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png',), 
+                  _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
+                    modalInformation(context);
+                  },), 
                   SizedBox( height: size.height * 0.03),
                   _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
                     context.push('/home_questions');

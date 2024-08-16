@@ -1,4 +1,3 @@
-- pantalla modal: “Aprende viendo, aprende jugando”
 - boton salir del juego
 - boton pausa del juego
 

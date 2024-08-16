@@ -37,7 +37,7 @@ flutter:
   assets:
     - assets/data/provitional_questions.json
     - assets/images/
-    - assets/images/
+    - assets/images/buttons/
     - assets/images/menu/
     - assets/images/tutorials/flappy/
     - assets/images/games/flappy/

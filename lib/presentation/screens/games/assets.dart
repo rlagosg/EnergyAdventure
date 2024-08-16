@@ -1,4 +1,5 @@
 class Assets {
+  
   static const backgorund  = 'games/flappy/background.png';
   static const ground      = 'games/flappy/ground.png';
   static const clouds      = 'games/flappy/clouds.png';
@@ -15,18 +16,19 @@ class Assets {
   static const menu     = 'assets/images/games/flappy/menu.jpg';
   static const imReady  = 'assets/images/games/flappy/imReady.png';
 
-  static const flying = 'fly.wav';
+  static const flying    = 'fly.wav';
   static const collision = 'collision.wav';
-  static const point = 'point.wav';
+  static const point     = 'point.wav';
 
   static const flappySlide_1 = 'assets/images/tutorials/flappy/1.png';
   static const flappySlide_2 = 'assets/images/tutorials/flappy/2.png';
   static const flappySlide_3 = 'assets/images/tutorials/flappy/3.png';
 
-  static const play    = 'assets/images/play.png';
-  static const home    = 'assets/images/home.png';
-  static const exit    = 'assets/images/exit.png';
-  static const back    = 'assets/images/back.png';
+  static const play  = 'assets/images/buttons/play.png';
+  static const home  = 'assets/images/buttons/home.png';
+  static const exit  = 'assets/images/buttons/exit.png';
+  static const back  = 'assets/images/buttons/back.png';
+  static const pause = 'assets/images/buttons/pause.png';
 
   static const information  = 'assets/images/information.png';
 

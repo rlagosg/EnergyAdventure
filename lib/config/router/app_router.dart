@@ -1,4 +1,6 @@
 import 'package:energyadventure/domain/entities/entities.dart';
+import 'package:energyadventure/presentation/screens/games/flappy/flappy_bird_game_screen.dart';
+import 'package:energyadventure/presentation/screens/games/flappy/flappy_screen.dart';
 import 'package:energyadventure/presentation/screens/games/questions/congratulations_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,6 +40,16 @@ final appRouter = GoRouter(
       path: '/flappy_lobby_screen',
       name: FlappyLobbyScreen.name,
       builder: (context, state) => const FlappyLobbyScreen(),
+    ),
+    GoRoute(
+      path: '/flappy_game_screen',
+      name: FlappyBirdGameScreen.name,
+      builder: (context, state) => const FlappyBirdGameScreen(),
+    ),
+    GoRoute(
+      path: '/flappy_screen',
+      name: FlappyScreen.name,
+      builder: (context, state) => const FlappyScreen(),
     ),
   ],
 );

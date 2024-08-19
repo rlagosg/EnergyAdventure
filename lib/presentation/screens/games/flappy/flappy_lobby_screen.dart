@@ -3,6 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../domain/entities/entities.dart';
+import '../../../components/flappy/pause_menu.dart';
 import 'flappy_screen.dart';
 
 
@@ -20,8 +21,9 @@ class FlappyLobbyScreen extends StatelessWidget {
        game: game,
        initialActiveOverlays: const [FlappyScreen.id],
        overlayBuilderMap: {
-         'mainMenu': (context, _) => FlappyScreen(game: game),
+         'mainMenu': (context, _) => const FlappyScreen(),
          'gameOver': (context, _) => GameOverScreen(game: game),
+         'pauseMenu': (context, _) => PauseMenu(game: game),
        },
      );
   }

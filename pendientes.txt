@@ -1,5 +1,6 @@
-- boton salir del juego
-- boton pausa del juego
+- agregar context a bir para poder acceder a pausa
+- icono del juego 
+- generacion de apk
 
 opcional:
 mensajes personalizados al final de cada juego

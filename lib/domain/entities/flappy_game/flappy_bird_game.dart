@@ -10,13 +10,15 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
-  
+
+  //agregar context
+
   FlappyBirdGame();
 
   late Bird bird;
   Timer interval = Timer(Config.pipeInterval, repeat: true);
   bool isHit = false;
-  bool isPaused = false;  // Agregar esta línea
+  bool isPaused = false;
   late TextComponent score;
 
   @override
@@ -41,17 +43,24 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
 
   TextComponent buildScore() {
     return TextComponent(
-        position: Vector2(size.x / 2, size.y / 2 * 0.2),
-        anchor: Anchor.center,
-        textRenderer: TextPaint(
-          style: const TextStyle(
-              fontSize: 40, fontFamily: 'Game', fontWeight: FontWeight.bold, color: Colors.amberAccent,),
-        ));
+      position: Vector2(size.x / 2, size.y / 2 * 0.2),
+      anchor: Anchor.center,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 40,
+          fontFamily: 'Game',
+          fontWeight: FontWeight.bold,
+          color: Colors.amberAccent,
+        ),
+      ),
+    );
   }
 
   @override
   void onTap() {
-    if (!isPaused) {
+    if (isPaused) {
+      resumeGame();
+    } else {
       bird.fly();
     }
   }
@@ -59,18 +68,29 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   @override
   void update(double dt) {
     super.update(dt);
-    interval.update(dt);
+    if (!isPaused) {
+      interval.update(dt);
+    }
     score.text = 'BOMBILLOS: ${bird.score}';
   }
 
-  // Métodos para pausar y reanudar el juego
   void pauseGame() {
     isPaused = true;
-    pauseEngine(); // Pausa el motor del juego
+    pauseEngine();
   }
 
   void resumeGame() {
     isPaused = false;
-    resumeEngine(); // Reanuda el motor del juego
+    resumeEngine();
+  }
+
+  void showPauseMenu() {
+    pauseGame();
+    overlays.add('pauseMenu');
+  }
+
+  void hidePauseMenu() {
+    resumeGame();
+    overlays.remove('pauseMenu');
   }
 }

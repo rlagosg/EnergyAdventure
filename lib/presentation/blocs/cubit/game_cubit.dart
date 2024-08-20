@@ -70,12 +70,8 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(
       isIntroShown: isIntroShown,
     ));
-  }
 
-  void setIsPaused( bool isPaused ){
-    emit(state.copyWith(
-      isPaused: isPaused,
-    ));
+    //updateLocalStorage();
   }
 
   void maxScore ( int maxScore ) {
@@ -146,6 +142,18 @@ class GameCubit extends Cubit<GameState> {
 
     return selecteds;
   }
+
+  void updateLocalStorage() async {
+
+    final data = GameData(      
+        maxScore    : state.maxScore, 
+        currentScore: state.currentScore,
+        canContinue : state.canContinue, 
+        isIntroShown: state.isIntroShown,
+    );
+
+    await localStorageRepository.saveGameData(data);
+  } 
 
   //* Metodos y funciones que necesitemos a futuro
 

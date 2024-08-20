@@ -27,5 +27,10 @@ class LocalStorageRespositoryImpl extends LocalStorageRepository {
   Future<GameData> getGameData() {
     return datasource.getGameData();
   }
+  
+  @override
+  Future<void> saveGameData(GameData gameData) {
+    return datasource.saveGameData(gameData);
+  }
 
 }

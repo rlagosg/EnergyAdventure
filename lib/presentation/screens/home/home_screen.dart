@@ -29,44 +29,56 @@ class _HomeView extends ConsumerStatefulWidget {
 
 
 class _HomeViewState extends ConsumerState<_HomeView> {
-
+  
   @override
   void initState() {
     super.initState();
-        // Iniciando el manejo de la data
+
+    // Cargar datos iniciales
     context.read<GameCubit>().loadInitialData();
+
+    // Verificar si el modal de introducción debe ser mostrado
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      
+      // * Quitamos los comentarios si deseamos verlo solo la primera vez que inicie
+      //final isIntroShown = context.read<GameCubit>().state.isIntroShown;
+      //if (!isIntroShown) {
+        modalInformation(context);
+        // Actualiza el estado para que no se muestre de nuevo
+        //context.read<GameCubit>().setIntroShow(true);  
+      //}
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
     
     return Center(
-        child: FadeIn(
-          child: Stack(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox( height: size.height * 0.03),
-                  _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
-                    modalInformation(context);
-                  },), 
-                  SizedBox( height: size.height * 0.03),
-                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
-                    context.push('/home_questions');
-                  },), 
-                  SizedBox(height: size.height * 0.04),
-                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', onPressed: ()=>{
-                    context.push('/flappy_intro_screen')
-                  }, ), 
-                ]
-              ),
-            ],
-          ),
+      child: FadeIn(
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(height: size.height * 0.03),
+                _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
+                  modalInformation(context);
+                }),
+                SizedBox(height: size.height * 0.03),
+                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
+                  context.push('/home_questions');
+                }),
+                SizedBox(height: size.height * 0.04),
+                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', onPressed: () {
+                  context.push('/flappy_intro_screen');
+                }),
+              ],
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }
 

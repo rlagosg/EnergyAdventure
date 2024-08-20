@@ -111,5 +111,13 @@ class IsarDatasource extends LocalStorageDatasource{
       return initialGameData;
     }
   }
+  
+  @override
+  Future<void> saveGameData(GameData gameData) async {
+    final isar = await db;
+    await isar.writeTxnSync(() async{
+      isar.gameDatas.putSync(gameData);
+    });
+  }
 
 }

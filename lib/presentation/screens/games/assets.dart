@@ -14,7 +14,10 @@ class Assets {
   static const gameOver     = 'assets/images/games/flappy/gameover.png';
 
   static const menu     = 'assets/images/games/flappy/menu.jpg';
+  static const menuPausa     = 'assets/images/games/flappy/pauseMenu.png';
   static const imReady  = 'assets/images/games/flappy/imReady.png';
+  static const btnExit  = 'assets/images/games/flappy/buttonExit.png';
+  static const btnContinue  = 'assets/images/games/flappy/buttonContinue.png';
 
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

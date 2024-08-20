@@ -1,30 +1,16 @@
-import 'package:energyadventure/presentation/screens/games/flappy/game_over_screen.dart';
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../domain/entities/entities.dart';
-import '../../../components/flappy/pause_menu.dart';
 import 'flappy_screen.dart';
 
 
 class FlappyLobbyScreen extends StatelessWidget {
-   
   static const name = 'flappy_lobby_screen';
   const FlappyLobbyScreen({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-
-    final game = FlappyBirdGame();
-
-    return GameWidget(
-       game: game,
-       initialActiveOverlays: const [FlappyScreen.id],
-       overlayBuilderMap: {
-         'mainMenu': (context, _) => const FlappyScreen(),
-         'gameOver': (context, _) => GameOverScreen(game: game),
-         'pauseMenu': (context, _) => PauseMenu(game: game),
-       },
-     );
+    return const Scaffold(
+      body: FlappyScreen(), // Aquí simplemente muestras la pantalla de lobby
+    );
   }
 }

@@ -45,10 +45,11 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(
       maxScore: game.maxScore,
       currentScore: game.currentScore,
-      canContinue: game.canContinue,
       isIntroShown: game.isIntroShown,
-
-      replacementHome: false
+      
+      canContinue: true,
+      replacementHome: false,
+      
     ));
     
   }
@@ -68,6 +69,12 @@ class GameCubit extends Cubit<GameState> {
   void setIntroShow( bool isIntroShown ){
     emit(state.copyWith(
       isIntroShown: isIntroShown,
+    ));
+  }
+
+  void setIsPaused( bool isPaused ){
+    emit(state.copyWith(
+      isPaused: isPaused,
     ));
   }
 

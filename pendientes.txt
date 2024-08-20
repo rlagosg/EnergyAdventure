@@ -1,4 +1,3 @@
-- agregar context a bir para poder acceder a pausa
 - icono del juego 
 - generacion de apk
 

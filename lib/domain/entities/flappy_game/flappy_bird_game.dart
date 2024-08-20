@@ -19,6 +19,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   Timer interval = Timer(Config.pipeInterval, repeat: true);
   bool isHit = false;
   bool isPaused = false;
+  bool isGameOver = false;
   late TextComponent score;
 
   @override
@@ -58,9 +59,10 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
 
   @override
   void onTap() {
-    if (isPaused) {
+     // Evita que el juego se reanude si el menú de pausa está activo
+    if (isPaused && !overlays.isActive('pauseMenu')) {
       resumeGame();
-    } else {
+    } else if (!isPaused) {
       bird.fly();
     }
   }
@@ -85,12 +87,27 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   }
 
   void showPauseMenu() {
-    pauseGame();
-    overlays.add('pauseMenu');
+    if (!isGameOver) {
+      pauseGame();
+      overlays.add('pauseMenu');
+    }
   }
 
   void hidePauseMenu() {
     resumeGame();
     overlays.remove('pauseMenu');
+  }
+
+  void showGameOver() {
+    isGameOver = true;
+    overlays.add('gameOver');
+    pauseEngine();
+  }
+
+  void destroy() {
+    // Liberar recursos aquí si es necesario
+    removeAll(children);
+    overlays.clear();
+    resumeEngine();
   }
 }

@@ -13,11 +13,12 @@ class Assets {
   static const bulbOn       = 'games/flappy/bulbOn.png';
   static const gameOver     = 'assets/images/games/flappy/gameover.png';
 
-  static const menu     = 'assets/images/games/flappy/menu.jpg';
-  static const menuPausa     = 'assets/images/games/flappy/pauseMenu.png';
-  static const imReady  = 'assets/images/games/flappy/imReady.png';
-  static const btnExit  = 'assets/images/games/flappy/buttonExit.png';
-  static const btnContinue  = 'assets/images/games/flappy/buttonContinue.png';
+  static const menu                = 'assets/images/games/flappy/menu.jpg';
+  static const menuPausa           = 'assets/images/games/flappy/pauseMenu.png';
+  static const imReady             = 'assets/images/games/flappy/imReady.png';
+  static const btnExit             = 'assets/images/games/flappy/buttonExit.png';
+  static const btnContinue         = 'assets/images/games/flappy/buttonContinue.png';
+  static const requirementMessage  = 'assets/images/games/flappy/requirementMessage.png';
 
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

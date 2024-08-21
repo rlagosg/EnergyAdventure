@@ -5,6 +5,8 @@ class GameState extends Equatable{
   final List<Question> questions;
   final int maxScore;
   final int currentScore;
+  final int officeStreak;
+  final int schoolStreak;
   final bool canContinue;
   final bool isIntroShown;
   final String currentCategory;
@@ -14,6 +16,8 @@ class GameState extends Equatable{
     this.id = 1,
     this.questions = const [],
     this.maxScore = 0, 
+    this.officeStreak = 0,
+    this.schoolStreak = 0,
     this.currentScore = 0, 
     this.canContinue = true,
     this.isIntroShown = false,    
@@ -25,18 +29,22 @@ class GameState extends Equatable{
     List<Question>? questions,
     int? maxScore,
     int? currentScore,
+    int? schoolStreak,
+    int? officeStreak,
     bool? canContinue,
     bool? isIntroShown,    
     String? currentCategory,
     bool? replacementHome,
   }) => GameState(
-      questions: questions ?? this.questions,
-      maxScore: maxScore ?? this.maxScore,
-      currentScore: currentScore ?? this.currentScore,
-      canContinue: canContinue ?? this.canContinue,
-      isIntroShown: isIntroShown ?? this.isIntroShown,      
-      currentCategory: currentCategory ?? this.currentCategory,
-      replacementHome: replacementHome ?? this.replacementHome,
+      questions       : questions ?? this.questions,
+      maxScore        : maxScore ?? this.maxScore,
+      currentScore    : currentScore ?? this.currentScore,
+      officeStreak    : officeStreak ?? this.officeStreak,
+      schoolStreak      : schoolStreak ?? this.schoolStreak,
+      canContinue     : canContinue ?? this.canContinue,
+      isIntroShown    : isIntroShown ?? this.isIntroShown,      
+      currentCategory : currentCategory ?? this.currentCategory,
+      replacementHome : replacementHome ?? this.replacementHome,
   );
 
   @override
@@ -45,6 +53,8 @@ class GameState extends Equatable{
     questions,
     maxScore,
     currentScore,
+    officeStreak,
+    schoolStreak,
     canContinue,
     isIntroShown,    
     currentCategory,

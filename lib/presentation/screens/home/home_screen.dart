@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../components/components.dart';
+
 class HomeScreen extends StatelessWidget {
   static const name = 'home_screen';
   const HomeScreen({super.key});
@@ -34,25 +36,25 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   void initState() {
     super.initState();
 
-    // Cargar datos iniciales
-    context.read<GameCubit>().loadInitialData();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      // Cargar datos iniciales
+      await context.read<GameCubit>().loadInitialData();
 
-    // Verificar si el modal de introducción debe ser mostrado
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      
-      // * Quitamos los comentarios si deseamos verlo solo la primera vez que inicie
-      //final isIntroShown = context.read<GameCubit>().state.isIntroShown;
-      //if (!isIntroShown) {
+      // Verificar si el widget sigue montado
+      if (!mounted) return;
+
+      // Verificar si el modal de introducción debe ser mostrado
+      if (!context.read<GameCubit>().state.isIntroShown) {
         modalInformation(context);
-        // Actualiza el estado para que no se muestre de nuevo
-        //context.read<GameCubit>().setIntroShow(true);  
-      //}
+        context.read<GameCubit>().setIntroShow(true);
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final canPlay = context.watch<GameCubit>().canPlayFlappy();
     
     return Center(
       child: FadeIn(
@@ -61,17 +63,30 @@ class _HomeViewState extends ConsumerState<_HomeView> {
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+
                 SizedBox(height: size.height * 0.03),
                 _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
                   modalInformation(context);
                 }),
+
                 SizedBox(height: size.height * 0.03),
                 _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
                   context.push('/home_questions');
                 }),
+
                 SizedBox(height: size.height * 0.04),
-                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', onPressed: () {
-                  context.push('/flappy_intro_screen');
+                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', 
+                onPressed: () {
+                  if( canPlay ){
+                      context.push('/flappy_intro_screen');
+                  }else{
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const RequirementMessage();
+                      },
+                    );
+                  }                  //
                 }),
               ],
             ),

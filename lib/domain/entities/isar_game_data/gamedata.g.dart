@@ -36,6 +36,16 @@ const GameDataSchema = CollectionSchema(
       id: 3,
       name: r'maxScore',
       type: IsarType.long,
+    ),
+    r'officeStreak': PropertySchema(
+      id: 4,
+      name: r'officeStreak',
+      type: IsarType.long,
+    ),
+    r'schoolStreak': PropertySchema(
+      id: 5,
+      name: r'schoolStreak',
+      type: IsarType.long,
     )
   },
   estimateSize: _gameDataEstimateSize,
@@ -71,6 +81,8 @@ void _gameDataSerialize(
   writer.writeLong(offsets[1], object.currentScore);
   writer.writeBool(offsets[2], object.isIntroShown);
   writer.writeLong(offsets[3], object.maxScore);
+  writer.writeLong(offsets[4], object.officeStreak);
+  writer.writeLong(offsets[5], object.schoolStreak);
 }
 
 GameData _gameDataDeserialize(
@@ -84,6 +96,8 @@ GameData _gameDataDeserialize(
     currentScore: reader.readLong(offsets[1]),
     isIntroShown: reader.readBool(offsets[2]),
     maxScore: reader.readLong(offsets[3]),
+    officeStreak: reader.readLong(offsets[4]),
+    schoolStreak: reader.readLong(offsets[5]),
   );
   object.isarId = id;
   return object;
@@ -103,6 +117,10 @@ P _gameDataDeserializeProp<P>(
     case 2:
       return (reader.readBool(offset)) as P;
     case 3:
+      return (reader.readLong(offset)) as P;
+    case 4:
+      return (reader.readLong(offset)) as P;
+    case 5:
       return (reader.readLong(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -395,6 +413,114 @@ extension GameDataQueryFilter
       ));
     });
   }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> officeStreakEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'officeStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition>
+      officeStreakGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'officeStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> officeStreakLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'officeStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> officeStreakBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'officeStreak',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> schoolStreakEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'schoolStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition>
+      schoolStreakGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'schoolStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> schoolStreakLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'schoolStreak',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition> schoolStreakBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'schoolStreak',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
 }
 
 extension GameDataQueryObject
@@ -449,6 +575,30 @@ extension GameDataQuerySortBy on QueryBuilder<GameData, GameData, QSortBy> {
   QueryBuilder<GameData, GameData, QAfterSortBy> sortByMaxScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'maxScore', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> sortByOfficeStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'officeStreak', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> sortByOfficeStreakDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'officeStreak', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> sortBySchoolStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'schoolStreak', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> sortBySchoolStreakDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'schoolStreak', Sort.desc);
     });
   }
 }
@@ -514,6 +664,30 @@ extension GameDataQuerySortThenBy
       return query.addSortBy(r'maxScore', Sort.desc);
     });
   }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> thenByOfficeStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'officeStreak', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> thenByOfficeStreakDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'officeStreak', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> thenBySchoolStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'schoolStreak', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> thenBySchoolStreakDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'schoolStreak', Sort.desc);
+    });
+  }
 }
 
 extension GameDataQueryWhereDistinct
@@ -539,6 +713,18 @@ extension GameDataQueryWhereDistinct
   QueryBuilder<GameData, GameData, QDistinct> distinctByMaxScore() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'maxScore');
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QDistinct> distinctByOfficeStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'officeStreak');
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QDistinct> distinctBySchoolStreak() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'schoolStreak');
     });
   }
 }
@@ -572,6 +758,18 @@ extension GameDataQueryProperty
   QueryBuilder<GameData, int, QQueryOperations> maxScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'maxScore');
+    });
+  }
+
+  QueryBuilder<GameData, int, QQueryOperations> officeStreakProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'officeStreak');
+    });
+  }
+
+  QueryBuilder<GameData, int, QQueryOperations> schoolStreakProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'schoolStreak');
     });
   }
 }

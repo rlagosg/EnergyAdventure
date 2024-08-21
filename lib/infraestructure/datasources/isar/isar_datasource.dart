@@ -100,8 +100,12 @@ class IsarDatasource extends LocalStorageDatasource{
     } else {
       
       final initialGameData = GameData(
-        maxScore: 0, currentScore: 0,
-        canContinue: false, isIntroShown: false,
+        maxScore     : 0, 
+        currentScore : 0,
+        officeStreak : 0,
+        schoolStreak : 0,
+        canContinue  : false, 
+        isIntroShown : false,
       );
 
       await isar.writeTxnSync(() async {
@@ -115,8 +119,9 @@ class IsarDatasource extends LocalStorageDatasource{
   @override
   Future<void> saveGameData(GameData gameData) async {
     final isar = await db;
-    await isar.writeTxnSync(() async{
-      isar.gameDatas.putSync(gameData);
+    await isar.writeTxn(() async {
+      gameData.isarId = 1;
+      await isar.gameDatas.put(gameData);
     });
   }
 

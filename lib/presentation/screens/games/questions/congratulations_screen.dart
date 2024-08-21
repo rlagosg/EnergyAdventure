@@ -91,6 +91,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
 
     //setiamos el replacemet del home
     context.read<GameCubit>().setReplacementHome(true);
+    context.read<GameCubit>().updateStreak();
 
     return Scaffold(
       body: Stack(

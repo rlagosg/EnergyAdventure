@@ -43,9 +43,11 @@ class GameCubit extends Cubit<GameState> {
     // Cargar los datos del juego
     final game = await localStorageRepository.getGameData();
     emit(state.copyWith(
-      maxScore: game.maxScore,
-      currentScore: game.currentScore,
-      isIntroShown: game.isIntroShown,
+      maxScore     : game.maxScore,
+      currentScore : game.currentScore,
+      isIntroShown : game.isIntroShown,
+      officeStreak : game.officeStreak,
+      schoolStreak   : game.schoolStreak,
       
       canContinue: true,
       replacementHome: false,
@@ -71,7 +73,7 @@ class GameCubit extends Cubit<GameState> {
       isIntroShown: isIntroShown,
     ));
 
-    //updateLocalStorage();
+    updateLocalStorage();
   }
 
   void maxScore ( int maxScore ) {
@@ -88,11 +90,13 @@ class GameCubit extends Cubit<GameState> {
 
   void setState(GameData data, List<Question> questions) {
     emit(state.copyWith(
-      questions: questions,
-      maxScore: data.maxScore,
-      currentScore: data.currentScore,
-      canContinue: data.canContinue,
-      isIntroShown: data.isIntroShown,
+      questions    : questions,
+      maxScore     : data.maxScore,
+      officeStreak : data.officeStreak,
+      schoolStreak   : data.schoolStreak,
+      currentScore : data.currentScore,
+      canContinue  : data.canContinue,
+      isIntroShown : data.isIntroShown,
     )); 
   }
 
@@ -105,6 +109,8 @@ class GameCubit extends Cubit<GameState> {
   } 
   
   List<Question> getQuestionByCategory(String category) {
+
+    setCurrentCategory(category);
 
     final categoryFilters = {
       CategoryQuest.office: [CategoryQuest.office, CategoryQuest.home],
@@ -143,13 +149,31 @@ class GameCubit extends Cubit<GameState> {
     return selecteds;
   }
 
+  void updateStreak(){
+
+    if (state.currentCategory == CategoryQuest.office){
+      emit(state.copyWith(officeStreak: state.officeStreak + 1));
+    }else if(state.currentCategory == CategoryQuest.school){
+      emit(state.copyWith(schoolStreak: state.schoolStreak + 1));
+    }
+
+    updateLocalStorage();
+
+  }
+
+  bool canPlayFlappy(){
+    return state.officeStreak >= 1 && state.schoolStreak >=2;
+  }
+
   void updateLocalStorage() async {
 
-    final data = GameData(      
-        maxScore    : state.maxScore, 
-        currentScore: state.currentScore,
-        canContinue : state.canContinue, 
-        isIntroShown: state.isIntroShown,
+    final data = GameData(
+        maxScore     : state.maxScore, 
+        currentScore : state.currentScore,
+        officeStreak : state.officeStreak,
+        schoolStreak   : state.schoolStreak,
+        canContinue  : state.canContinue, 
+        isIntroShown : state.isIntroShown,
     );
 
     await localStorageRepository.saveGameData(data);

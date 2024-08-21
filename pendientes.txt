@@ -1,4 +1,3 @@
-- icono del juego 
 - generacion de apk
 
 opcional:

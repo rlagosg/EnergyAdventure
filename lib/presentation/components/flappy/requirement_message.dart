@@ -10,7 +10,7 @@ class RequirementMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final isTablet = size.width > 600; // Condición para determinar si es una tablet
+    final isTablet = size.width > 600; 
 
     // Ajustes de estilo en función del dispositivo
     final textStyle = TextStyle(

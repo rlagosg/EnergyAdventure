@@ -22,6 +22,8 @@ class Assets {
   static const requirementMessage  = 'assets/images/games/flappy/requirementMessage.png';
 
   static const cardQuestionShool  = 'assets/images/games/questions/cardQuestion_1.png';
+  static const cardBoxQuestion  = 'assets/images/games/questions/cardBoxQuestion.png';
+  static const cardBoxQuestion_1  = 'assets/images/games/questions/cardBoxQuestion_1.png';
 
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

@@ -59,6 +59,7 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600; // Condición para determinar si es una tablet
 
     return Scaffold(
       body: FadeIn(
@@ -72,10 +73,11 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
                 ).toList(),
             ),
         
+            // Boton de play
             endReached ? 
             Positioned(
-              right: size.width * 0.01,
-              top:  size.height * 0.04,
+              right: size.width * 0.04,
+              top:  size.height * 0.025,
               child: FadeInRight(
                 from: 15,
                 //delay:const Duration(seconds: 1),
@@ -85,18 +87,19 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
                 ),
               ),
             ) : const SizedBox(),
+
+            // Imagen de Estoy Listo
             endReached ? Positioned(
-              left: size.width * 0.02,
-              top: size.height * 0.11,
+              left: isTablet ? size.width * 0.11 : size.width * 0.069,
+              top: isTablet ? size.height * 0.032 : size.width * 0.22,
               child: FadeInLeft(
                 from: 15,
                 delay: const Duration(seconds: 1),
-                child: TextButton(
-                  onPressed: () {},
-                  child: Image.asset( Assets.imReady, height: size.height * 0.06,),
-                ),
+                child: Image.asset( isTablet ? Assets.imReady_2 : Assets.imReady , height: isTablet ? size.height * 0.06 : size.height * 0.058,),
               ),
             ): const SizedBox(),
+
+            // Dots
              Positioned(
                bottom: 30,
                left: size.width * 0.35,
@@ -118,13 +121,18 @@ class SlideFlappy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600;
+    
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(slide.imageUrl, fit: BoxFit.cover,),
+            Image.asset(slide.imageUrl, fit: BoxFit.cover, height: isTablet ? size.height * 0.70 : null),
           ]
       ),
     ));

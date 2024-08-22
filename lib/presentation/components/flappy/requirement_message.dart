@@ -9,21 +9,23 @@ class RequirementMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600; // Condición para determinar si es una tablet
 
-    const TextStyle myTextStyle = TextStyle(
-      fontSize: 25, 
+    // Ajustes de estilo en función del dispositivo
+    final textStyle = TextStyle(
+      fontSize: isTablet ? 35 : 25, 
       fontFamily: 'Comic', 
-      color: Color.fromARGB(255, 131, 115, 170)
+      color: const Color.fromARGB(255, 131, 115, 170),
     );
 
-    Container myContainer(int counter, int streak){
+    Container myContainer(int counter, int streak) {
       return Container(
-        width: size.width * 0.20,  
-        height: size.height * 0.10,  
+        //color: Colors.amber,
+        width: isTablet ? size.width * 0.168 : size.width * 0.228,  
+        height: isTablet ? size.height * 0.067 : size.height * 0.06,  
         alignment: Alignment.center, 
-        child: Text('$counter/$streak' , textAlign: TextAlign.center, style: myTextStyle),
+        child: Text('$counter/$streak', textAlign: TextAlign.center, style: textStyle),
       );
     }
 
@@ -35,31 +37,30 @@ class RequirementMessage extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-            
-                  // Imagen de fondo
+                // Imagen de fondo
                 Image.asset(
                   Assets.requirementMessage,
-                  height: size.height * 0.50,
+                  height: isTablet ? size.height * 0.65 : size.height * 0.9,
                 ),
-            
-                // contador de rachas de home
+      
+                // Contador de rachas de school
                 Positioned(
-                  bottom: size.height * 0.087,
-                  left: size.width * 0.164,
+                  bottom: isTablet ? size.height * 0.145 : size.height * 0.299,
+                  left: isTablet ? size.width * 0.185 : size.width * 0.168,
                   child: myContainer(state.schoolStreak, 2),
                 ),
-            
-                // contador de rachas de office
+      
+                // Contador de rachas de office
                 Positioned(
-                  bottom: size.height * 0.087,
-                  right: size.width * 0.147,
-                  child: myContainer(state.officeStreak, 1) ,
+                  bottom: isTablet ? size.height * 0.145 : size.height * 0.299,
+                  right: isTablet ? size.width * 0.167 : size.width * 0.151,
+                  child: myContainer(state.officeStreak, 1),
                 ),
-            
+      
                 // Botón de salir
                 Positioned(
-                  top: size.height * 0.42,
-                  left: size.width * 0.38,
+                  bottom: isTablet ? size.height * 0.05 : size.height * 0.22,
+                  left: isTablet ? size.width * 0.41 : size.width * 0.45,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).pop();
@@ -71,7 +72,7 @@ class RequirementMessage extends StatelessWidget {
                     ),
                     child: Image.asset(
                       Assets.btnExit,
-                      width: size.height * 0.15, 
+                      width: isTablet ? size.height * 0.17 : size.height * 0.13,
                     ),
                   ),
                 ),
@@ -79,7 +80,7 @@ class RequirementMessage extends StatelessWidget {
             ),
           );
         },
-      )
+      ),
     );
   }
 }

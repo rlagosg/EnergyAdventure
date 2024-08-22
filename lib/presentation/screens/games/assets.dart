@@ -16,9 +16,12 @@ class Assets {
   static const menu                = 'assets/images/games/flappy/menu.jpg';
   static const menuPausa           = 'assets/images/games/flappy/pauseMenu.png';
   static const imReady             = 'assets/images/games/flappy/imReady.png';
+  static const imReady_2           = 'assets/images/games/flappy/imReady_2.png';
   static const btnExit             = 'assets/images/games/flappy/buttonExit.png';
   static const btnContinue         = 'assets/images/games/flappy/buttonContinue.png';
   static const requirementMessage  = 'assets/images/games/flappy/requirementMessage.png';
+
+  static const cardQuestionShool  = 'assets/images/games/questions/cardQuestion_1.png';
 
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

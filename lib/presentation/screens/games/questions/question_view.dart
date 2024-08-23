@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:confetti/confetti.dart';
+import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class QuestionView extends StatefulWidget {
 }
 
 class QuestionViewState extends State<QuestionView> {
+  
   int _currentImageIndex = 1;
   final Random _random = Random();
   late ConfettiController _confettiController;
@@ -56,11 +58,25 @@ class QuestionViewState extends State<QuestionView> {
     final isTablet = size.width > 600;
     final isFinal = context.read<GameQuestionsCubit>().state.currentQuestionIndex == context.read<GameQuestionsCubit>().state.questions.length - 1;
 
+    final cardCategory = context.read<GameCubit>().state.currentCategory == CategoryQuest.school ? Assets.cardQuestionShool : Assets.cardQuestionWork;
+
     void showCustomSnackbar(BuildContext context, bool isCorrect, String explanation) {
+
+
+    TextStyle textTitle = TextStyle(
+      fontSize: isTablet ? 26 : null, 
+      color: const Color.fromARGB(255, 36, 18, 66),
+      fontFamily: 'Comic',
+    );
+
+    TextStyle textExplanation = TextStyle(
+      fontSize: isTablet ? 20 : null, 
+      fontFamily: 'Comic',
+    );
 
     // SnakBar
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(isCorrect ? 'Correcto' : 'Incorrecto'),
+      content: Text(isCorrect ? 'Correcto' : 'Incorrecto', style:textExplanation,),
       backgroundColor: isCorrect ? Colors.green : Colors.red,
       duration: const Duration(seconds: 1),
     ));
@@ -70,8 +86,8 @@ class QuestionViewState extends State<QuestionView> {
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(isCorrect ? 'Bien Hecho' : "Vamos a intentarlo de nuevo\n¡tú puedes!"),
-          content: Text(isCorrect ? explanation : 'Recuerda... $explanation'),
+          title: Text(isCorrect ? '¡Bien Hecho!' : "Vamos a intentarlo de nuevo\n¡tú puedes!", style: textTitle),
+          content: Text(isCorrect ? explanation : 'Recuerda... $explanation', style: textExplanation,),
           actions: [
             TextButton(
               onPressed: () { 
@@ -80,7 +96,7 @@ class QuestionViewState extends State<QuestionView> {
                   context.pushReplacement('/congratulations');
                 }
               },
-              child: const Text('Aceptar'),
+              child: Text('Aceptar', style: textExplanation),
             ),
           ],
         ),
@@ -95,15 +111,15 @@ class QuestionViewState extends State<QuestionView> {
 
       // imagen del card
       Positioned(
-        left: size.width * 0.05,
+        left: isTablet ? size.width * 0.12 : size.width * 0.05,
         top: size.height * 0.15,
-        child: Image.asset(Assets.cardQuestionShool, width: size.width * 0.9, fit: BoxFit.cover,)
+        child: Image.asset(cardCategory , width: isTablet ? size.width * 0.75 : size.width * 0.9, fit: BoxFit.cover,)
       ),
 
       // Imagen Personaje
       Positioned(
-        left: size.width * 0.28,
-        top: size.height * 0.20,
+        left: isTablet ? size.width * 0.36 : size.width * 0.32,
+        top:  isTablet ? size.height * 0.215:  size.height * 0.20,
         child: AnimatedSwitcher(
           duration: const Duration(seconds: 2),
           transitionBuilder: (Widget child, Animation<double> animation) {
@@ -120,10 +136,11 @@ class QuestionViewState extends State<QuestionView> {
         ),
       ),
 
+      // imagen del box de pregunta
       Positioned(
-        left: size.width * 0.10,
-        top: size.height * 0.41,
-        child: Image.asset(Assets.cardBoxQuestion_1, width: size.width * 0.8, fit: BoxFit.cover,)
+        left: isTablet ? size.width * 0.16 : size.width * 0.10,
+        top: isTablet ? size.height * 0.432 : size.height * 0.41,
+        child: Image.asset(Assets.cardBoxQuestion_1, width:  isTablet ? size.width * 0.67 : size.width * 0.8, fit: BoxFit.cover,)
       ),
 
       Column(
@@ -131,24 +148,25 @@ class QuestionViewState extends State<QuestionView> {
         children: [
 
           // Espacio inicial
-          SizedBox(height: isTablet ? size.height * 0.05 : size.height * 0.32 ),     
+          SizedBox(height: isTablet ? size.height * 0.385 : size.height * 0.322 ),     
 
           // Pregunta
           Padding(
-            padding: EdgeInsets.only(left: isTablet ? size.width * 0.168 : size.width * 0.142, right: 40, ),
+            padding: EdgeInsets.only(left: isTablet ? size.width * 0.195 : size.width * 0.142, right: isTablet ? size.width * 0.210 : 40, ),
             child: FadeIn(
               child: Container(
                 //color: Colors.amber,
-                width: isTablet ? size.width * 0.168 : size.width * 0.72,  
-                height: isTablet ? size.height * 0.067 : size.height * 0.20,
-                alignment: Alignment.center, 
+                height: isTablet ? size.height * 0.18 : size.height * 0.175,
+                width: isTablet ? size.width * 0.60 : size.width * 0.72,  
+                alignment: Alignment.centerRight, 
                 child: Text(
                   widget.question.content,
-                  style: const TextStyle(
-                    fontSize: 19.5, 
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: isTablet ? 22 : 19.5, 
                     fontWeight: FontWeight.bold, 
                     fontFamily: 'Comic',
-                    color: Color.fromARGB(255, 59, 31, 108)
+                    color: const Color.fromARGB(255, 59, 31, 108)
                   ),
                 ),
               ),

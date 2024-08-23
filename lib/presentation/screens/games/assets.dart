@@ -22,8 +22,13 @@ class Assets {
   static const requirementMessage  = 'assets/images/games/flappy/requirementMessage.png';
 
   static const cardQuestionShool  = 'assets/images/games/questions/cardQuestion_1.png';
-  static const cardBoxQuestion  = 'assets/images/games/questions/cardBoxQuestion.png';
+  static const cardQuestionWork   = 'assets/images/games/questions/cardQuestion_2.png';
+  static const cardBoxQuestion    = 'assets/images/games/questions/cardBoxQuestion.png';
   static const cardBoxQuestion_1  = 'assets/images/games/questions/cardBoxQuestion_1.png';
+  static const tittleQuestions    = 'assets/images/games/questions/tittleQuestions.png';
+  static const questionsBackground    = 'assets/images/games/questions/questionsBackground.jpg';
+  static const questionMenu      = 'assets/images/games/questions/questionMenu.jpeg';
+  
 
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';
@@ -39,7 +44,9 @@ class Assets {
   static const back  = 'assets/images/buttons/back.png';
   static const pause = 'assets/images/buttons/pause.png';
 
+  static const homeBackground    = 'assets/images/games/questions/homeBackground.jpg';
+  static const mainBackground = 'assets/images/menu/mainBackground.jpg';
+  static const mainBackgroundTablet = 'assets/images/menu/mainBackground_tablet.jpg';
   static const information  = 'assets/images/information.png';
-
 
 }

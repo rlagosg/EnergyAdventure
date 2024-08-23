@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 //import 'package:energyadventure/config/menu/menu_items.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
+import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:energyadventure/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,41 +55,56 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600; 
     final canPlay = context.watch<GameCubit>().canPlayFlappy();
+    
     
     return Center(
       child: FadeIn(
         child: Stack(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
+            
+            Positioned.fill(
+            child: 
+              Image.asset( Assets.homeBackground,
+                fit: BoxFit.cover, 
+                //width: size.width * 1,
+                //height: size.height * 1,
+              ),
+            ),
 
-                SizedBox(height: size.height * 0.03),
-                _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
-                  modalInformation(context);
-                }),
-
-                SizedBox(height: size.height * 0.03),
-                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
-                  context.push('/home_questions');
-                }),
-
-                SizedBox(height: size.height * 0.04),
-                _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', 
-                onPressed: () {
-                  if( canPlay ){
-                      context.push('/flappy_intro_screen');
-                  }else{
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return const RequirementMessage();
-                      },
-                    );
-                  }                  //
-                }),
-              ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: isTablet ? 90 : 0 ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  
+                  SizedBox(height: size.height * 0.03),
+                  _MenuQuestionItem(height: size.height * 0.19, nameImage: 'menuLogo.png', onPressed: (){
+                    modalInformation(context);
+                  }),
+              
+                  SizedBox(height: size.height * 0.03),
+                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'wisdomBrigth.png', onPressed: () {
+                    context.push('/home_questions');
+                  }),
+              
+                  SizedBox(height: size.height * 0.04),
+                  _MenuQuestionItem(height: size.height * 0.28, nameImage: 'brilliantFlight.png', 
+                  onPressed: () {
+                    if( canPlay ){
+                        context.push('/flappy_intro_screen');
+                    }else{
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const RequirementMessage();
+                        },
+                      );
+                    }                  //
+                  }),
+                ],
+              ),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/domain/entities/entities.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
+import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +18,7 @@ class HomeQuestions extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600; 
     final replacement = context.watch<GameCubit>().state.replacementHome;
 
     return Scaffold(
@@ -24,29 +26,40 @@ class HomeQuestions extends StatelessWidget {
         child: FadeIn(
           child: Stack(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  _MenuQuestionItem(
-                    height: size.height * 0.22, 
-                    nameImage: 'tittle-gameofquestion.png',
-                  ), 
-                  _MenuQuestionItem(
-                    height: size.height * 0.28, 
-                    nameImage: 'home-school.png',
-                    onPressed: () {
-                      context.push('/questions/${CategoryQuest.school}'); 
-                    },
-                  ), 
-                  SizedBox(height: size.height * 0.04),
-                  _MenuQuestionItem(
-                    height: size.height * 0.28, 
-                    nameImage: 'home-work.png',
-                    onPressed: () {
-                      context.push('/questions/${CategoryQuest.office}');
-                     },
+
+              Positioned.fill(
+                child: 
+                  Image.asset( Assets.questionMenu,
+                    fit: BoxFit.cover, 
                   ),
-                ]
+              ),
+
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: isTablet ? 60 : 0 ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    _MenuQuestionItem(
+                      height: size.height * 0.22, 
+                      nameImage: 'tittle-gameofquestion.png',
+                    ), 
+                    _MenuQuestionItem(
+                      height: size.height * 0.28, 
+                      nameImage: 'home-school.png',
+                      onPressed: () {
+                        context.push('/questions/${CategoryQuest.school}'); 
+                      },
+                    ), 
+                    SizedBox(height: size.height * 0.04),
+                    _MenuQuestionItem(
+                      height: size.height * 0.28, 
+                      nameImage: 'home-work.png',
+                      onPressed: () {
+                        context.push('/questions/${CategoryQuest.office}');
+                       },
+                    ),
+                  ]
+                ),
               ),
             ],
           ),

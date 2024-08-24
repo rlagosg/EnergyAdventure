@@ -106,6 +106,7 @@ class IsarDatasource extends LocalStorageDatasource{
         schoolStreak : 0,
         canContinue  : false, 
         isIntroShown : false,
+        isIntroQuestionShown : false,
       );
 
       await isar.writeTxnSync(() async {

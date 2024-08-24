@@ -17,6 +17,10 @@ class FlappyBirdGameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final game = FlappyBirdGame();
 
+    // Obtener maxScore del estado global
+    final maxScore = context.read<GameCubit>().state.maxScore;
+    game.updateMaxScore(maxScore);
+
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {

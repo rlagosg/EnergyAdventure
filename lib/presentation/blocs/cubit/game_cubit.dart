@@ -45,9 +45,10 @@ class GameCubit extends Cubit<GameState> {
     emit(state.copyWith(
       maxScore     : game.maxScore,
       currentScore : game.currentScore,
-      isIntroShown : game.isIntroShown,
       officeStreak : game.officeStreak,
-      schoolStreak   : game.schoolStreak,
+      schoolStreak : game.schoolStreak,
+      isIntroShown : game.isIntroShown,
+      isIntroQuestionShown : game.isIntroQuestionShown,
       
       canContinue: true,
       replacementHome: false,
@@ -76,10 +77,21 @@ class GameCubit extends Cubit<GameState> {
     updateLocalStorage();
   }
 
-  void maxScore ( int maxScore ) {
+  void setIntroQuestionShown( bool isIntroQuesionShown ){
     emit(state.copyWith(
-      maxScore: maxScore,
+      isIntroQuestionShown: isIntroQuesionShown,
     ));
+
+    updateLocalStorage();
+  }
+
+  void maxScore ( int maxScore ) {
+    if( maxScore > state.maxScore ){    
+      emit(state.copyWith(
+        maxScore: maxScore,
+      ));
+      updateLocalStorage();
+    }
   }
 
   void setCurrentScore ( int currentScore ) {
@@ -93,10 +105,11 @@ class GameCubit extends Cubit<GameState> {
       questions    : questions,
       maxScore     : data.maxScore,
       officeStreak : data.officeStreak,
-      schoolStreak   : data.schoolStreak,
+      schoolStreak : data.schoolStreak,
       currentScore : data.currentScore,
       canContinue  : data.canContinue,
       isIntroShown : data.isIntroShown,
+      isIntroQuestionShown : data.isIntroQuestionShown,
     )); 
   }
 
@@ -171,9 +184,10 @@ class GameCubit extends Cubit<GameState> {
         maxScore     : state.maxScore, 
         currentScore : state.currentScore,
         officeStreak : state.officeStreak,
-        schoolStreak   : state.schoolStreak,
+        schoolStreak : state.schoolStreak,
         canContinue  : state.canContinue, 
         isIntroShown : state.isIntroShown,
+        isIntroQuestionShown : state.isIntroQuestionShown,
     );
 
     await localStorageRepository.saveGameData(data);

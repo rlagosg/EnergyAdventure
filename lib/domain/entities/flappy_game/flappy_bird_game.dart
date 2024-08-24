@@ -11,8 +11,6 @@ import 'package:flutter/material.dart';
 
 class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
 
-  //agregar context
-
   FlappyBirdGame();
 
   late Bird bird;
@@ -21,6 +19,9 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   bool isPaused = false;
   bool isGameOver = false;
   late TextComponent score;
+
+  late TextComponent record; 
+  int maxScore = 0;
 
   @override
   Future<void> onLoad() async {
@@ -32,6 +33,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       Clouds(),
       bird = Bird(),
       score = buildScore(),
+      record = buildRecord(),
     ]);
 
     interval.onTick = () {
@@ -57,6 +59,21 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
     );
   }
 
+  TextComponent buildRecord() {
+    return TextComponent(
+      position: Vector2(size.x / 2, size.y / 2 * 0.1), // Posición diferente para no superponer el texto
+      anchor: Anchor.center,
+      textRenderer: TextPaint(
+        style: const TextStyle(
+          fontSize: 35,
+          fontFamily: 'Game',
+          fontWeight: FontWeight.bold,
+          color: Colors.redAccent,
+        ),
+      ),
+    );
+  }
+
   @override
   void onTap() {
      // Evita que el juego se reanude si el menú de pausa está activo
@@ -74,6 +91,11 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
       interval.update(dt);
     }
     score.text = 'BOMBILLOS: ${bird.score}';
+    record.text = 'RECORD: $maxScore';
+  }
+
+  void updateMaxScore(int newMaxScore) {
+    maxScore = newMaxScore;
   }
 
   void pauseGame() {

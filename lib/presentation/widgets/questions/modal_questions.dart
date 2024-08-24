@@ -19,7 +19,7 @@ class ModalQuestions extends StatelessWidget {
               children: [
                 // Imagen de fondo
                 Image.asset(
-                  Assets.modalQuestions_3,
+                  Assets.modalQuestions,
                   height: isTablet ? size.height * 0.70 : size.height * 1,
                 ),
       

@@ -9,10 +9,36 @@ import 'package:go_router/go_router.dart';
 import '../../../widgets/widgets.dart';
 
 
-class HomeQuestions extends StatelessWidget {
+class HomeQuestions extends StatefulWidget {
   
   static const name = 'home_questions';  
   const HomeQuestions({super.key});
+
+  @override
+  State<HomeQuestions> createState() => _HomeQuestionsState();
+}
+
+class _HomeQuestionsState extends State<HomeQuestions> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+
+      // Verificar si el modal de introducción debe ser mostrado
+      if (!context.read<GameCubit>().state.isIntroQuestionShown) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const ModalQuestions();
+          },
+        );
+        context.read<GameCubit>().setIntroQuestionShown(true);
+      }
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

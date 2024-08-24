@@ -20,6 +20,16 @@ class GameOverScreen extends StatelessWidget {
       context.read<GameCubit>().setContinue(canContinue);
     }
 
+    // Comparar el puntaje actual con el maxScore y actualizar
+    final currentScore = game.bird.score;
+    final maxScore = context.read<GameCubit>().state.maxScore;
+
+    if (currentScore > maxScore) {
+      context.read<GameCubit>().maxScore(currentScore);
+    }
+
+    game.updateMaxScore(currentScore > maxScore ? currentScore : maxScore);
+
     return Material(
       color: Colors.black38,
       child: Center(
@@ -35,6 +45,15 @@ class GameOverScreen extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 50,
                 color: Colors.amberAccent,
+                fontFamily: 'Game',
+              ),
+            ),
+            //SizedBox(height: size.height * 0.01),
+            Text(
+              'RECORD: ${currentScore > maxScore ? currentScore : maxScore}',
+              style: const TextStyle(
+                fontSize: 40,
+                color: Colors.redAccent,
                 fontFamily: 'Game',
               ),
             ),

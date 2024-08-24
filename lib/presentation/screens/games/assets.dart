@@ -29,9 +29,7 @@ class Assets {
   static const questionsCompleted        = 'assets/images/games/questions/questionsCompleted.png';
   static const questionsBackground       = 'assets/images/games/questions/questionsBackground.jpg';
   static const questionsBackgroundTablet = 'assets/images/games/questions/questionsBackground_tablet.jpg';
-  static const modalQuestions = 'assets/images/games/questions/modalQuestions.png';
-  static const modalQuestions_2 = 'assets/images/games/questions/modalQuestions_2.png';
-  static const modalQuestions_3 = 'assets/images/games/questions/modalQuestions_3.png';
+  static const modalQuestions            = 'assets/images/games/questions/modalQuestions.png';
   
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

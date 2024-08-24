@@ -20,7 +20,7 @@ class AnswerButton extends StatelessWidget {
         onPressed: onPressed,
         child: Padding(
           padding: EdgeInsets.all( isTablet ? size.width * 0.02 : size.width * 0.02),
-          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTablet ? 22 : 16), textAlign: TextAlign.center, ),
+          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTablet ? size.height * 0.015 : 16), textAlign: TextAlign.center, ),
         ),
       ),
     );

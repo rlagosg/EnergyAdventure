@@ -27,23 +27,28 @@ const GameDataSchema = CollectionSchema(
       name: r'currentScore',
       type: IsarType.long,
     ),
-    r'isIntroShown': PropertySchema(
+    r'isIntroQuestionShown': PropertySchema(
       id: 2,
+      name: r'isIntroQuestionShown',
+      type: IsarType.bool,
+    ),
+    r'isIntroShown': PropertySchema(
+      id: 3,
       name: r'isIntroShown',
       type: IsarType.bool,
     ),
     r'maxScore': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'maxScore',
       type: IsarType.long,
     ),
     r'officeStreak': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'officeStreak',
       type: IsarType.long,
     ),
     r'schoolStreak': PropertySchema(
-      id: 5,
+      id: 6,
       name: r'schoolStreak',
       type: IsarType.long,
     )
@@ -79,10 +84,11 @@ void _gameDataSerialize(
 ) {
   writer.writeBool(offsets[0], object.canContinue);
   writer.writeLong(offsets[1], object.currentScore);
-  writer.writeBool(offsets[2], object.isIntroShown);
-  writer.writeLong(offsets[3], object.maxScore);
-  writer.writeLong(offsets[4], object.officeStreak);
-  writer.writeLong(offsets[5], object.schoolStreak);
+  writer.writeBool(offsets[2], object.isIntroQuestionShown);
+  writer.writeBool(offsets[3], object.isIntroShown);
+  writer.writeLong(offsets[4], object.maxScore);
+  writer.writeLong(offsets[5], object.officeStreak);
+  writer.writeLong(offsets[6], object.schoolStreak);
 }
 
 GameData _gameDataDeserialize(
@@ -94,10 +100,11 @@ GameData _gameDataDeserialize(
   final object = GameData(
     canContinue: reader.readBool(offsets[0]),
     currentScore: reader.readLong(offsets[1]),
-    isIntroShown: reader.readBool(offsets[2]),
-    maxScore: reader.readLong(offsets[3]),
-    officeStreak: reader.readLong(offsets[4]),
-    schoolStreak: reader.readLong(offsets[5]),
+    isIntroQuestionShown: reader.readBool(offsets[2]),
+    isIntroShown: reader.readBool(offsets[3]),
+    maxScore: reader.readLong(offsets[4]),
+    officeStreak: reader.readLong(offsets[5]),
+    schoolStreak: reader.readLong(offsets[6]),
   );
   object.isarId = id;
   return object;
@@ -117,10 +124,12 @@ P _gameDataDeserializeProp<P>(
     case 2:
       return (reader.readBool(offset)) as P;
     case 3:
-      return (reader.readLong(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 4:
       return (reader.readLong(offset)) as P;
     case 5:
+      return (reader.readLong(offset)) as P;
+    case 6:
       return (reader.readLong(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -278,6 +287,16 @@ extension GameDataQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterFilterCondition>
+      isIntroQuestionShownEqualTo(bool value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'isIntroQuestionShown',
+        value: value,
       ));
     });
   }
@@ -554,6 +573,19 @@ extension GameDataQuerySortBy on QueryBuilder<GameData, GameData, QSortBy> {
     });
   }
 
+  QueryBuilder<GameData, GameData, QAfterSortBy> sortByIsIntroQuestionShown() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isIntroQuestionShown', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy>
+      sortByIsIntroQuestionShownDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isIntroQuestionShown', Sort.desc);
+    });
+  }
+
   QueryBuilder<GameData, GameData, QAfterSortBy> sortByIsIntroShown() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'isIntroShown', Sort.asc);
@@ -626,6 +658,19 @@ extension GameDataQuerySortThenBy
   QueryBuilder<GameData, GameData, QAfterSortBy> thenByCurrentScoreDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'currentScore', Sort.desc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy> thenByIsIntroQuestionShown() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isIntroQuestionShown', Sort.asc);
+    });
+  }
+
+  QueryBuilder<GameData, GameData, QAfterSortBy>
+      thenByIsIntroQuestionShownDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'isIntroQuestionShown', Sort.desc);
     });
   }
 
@@ -704,6 +749,12 @@ extension GameDataQueryWhereDistinct
     });
   }
 
+  QueryBuilder<GameData, GameData, QDistinct> distinctByIsIntroQuestionShown() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'isIntroQuestionShown');
+    });
+  }
+
   QueryBuilder<GameData, GameData, QDistinct> distinctByIsIntroShown() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'isIntroShown');
@@ -746,6 +797,13 @@ extension GameDataQueryProperty
   QueryBuilder<GameData, int, QQueryOperations> currentScoreProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'currentScore');
+    });
+  }
+
+  QueryBuilder<GameData, bool, QQueryOperations>
+      isIntroQuestionShownProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'isIntroQuestionShown');
     });
   }
 

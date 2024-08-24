@@ -164,7 +164,7 @@ class QuestionViewState extends State<QuestionView> {
           children: [
 
             // Espacio inicial
-            SizedBox(height: isEspecialHeight ? size.height * 0.345 : scaleSizeHeight(tablePlus: 0.383, tablet: 0.388, base: 0.322)),   
+            SizedBox(height: isEspecialHeight ? size.height * 0.345 : scaleSizeHeight(tablePlus: 0.410, tablet: 0.410, base: 0.335)),   
 
             // Pregunta
             Padding(

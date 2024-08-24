@@ -1,12 +1,9 @@
-- modal al titulo de juego de preguntas
 - generacion de apk
 
 opcional:
 mensajes personalizados al final de cada juego
 mensaje personalizado en la pantalla modal
 sonido a respuesta incorrecta y correcta
-agregar mas bombillos y puntaje en niveles
-agregar id opcional para saber si el json ha realizado algun cambio y no este actualizando la base
-de datos todo el tiempo
+agregar id opcional para saber si el json ha realizado algun cambio
 
 

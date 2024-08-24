@@ -14,6 +14,7 @@ class GameData {
   final int  schoolStreak;
   final bool canContinue;
   final bool isIntroShown;
+  final bool isIntroQuestionShown;
 
   GameData({
     required this.maxScore,
@@ -21,7 +22,8 @@ class GameData {
     required this.officeStreak,
     required this.schoolStreak,
     required this.canContinue,
-    required this.isIntroShown
+    required this.isIntroShown,
+    required this.isIntroQuestionShown
   });
 
 }

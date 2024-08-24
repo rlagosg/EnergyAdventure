@@ -10,7 +10,8 @@ class RequirementMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final isTablet = size.width > 600; 
+    final isTablet = size.width > 600;
+    final isEspecialHeight = size.height < 800; 
 
     // Ajustes de estilo en función del dispositivo
     final textStyle = TextStyle(
@@ -22,8 +23,8 @@ class RequirementMessage extends StatelessWidget {
     Container myContainer(int counter, int streak) {
       return Container(
         //color: Colors.amber,
-        width: isTablet ? size.width * 0.168 : size.width * 0.228,  
-        height: isTablet ? size.height * 0.067 : size.height * 0.06,  
+        width: isEspecialHeight ? size.width * 0.190 : isTablet ? size.width * 0.168 : size.width * 0.228,  
+        height: isEspecialHeight ? size.height * 0.057 : isTablet ? size.height * 0.067 : size.height * 0.06,  
         alignment: Alignment.center, 
         child: Text('$counter/$streak', textAlign: TextAlign.center, style: textStyle),
       );
@@ -45,14 +46,14 @@ class RequirementMessage extends StatelessWidget {
       
                 // Contador de rachas de school
                 Positioned(
-                  bottom: isTablet ? size.height * 0.145 : size.height * 0.299,
+                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.299,
                   left: isTablet ? size.width * 0.185 : size.width * 0.168,
                   child: myContainer(state.schoolStreak, 2),
                 ),
       
                 // Contador de rachas de office
                 Positioned(
-                  bottom: isTablet ? size.height * 0.145 : size.height * 0.299,
+                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.299,
                   right: isTablet ? size.width * 0.167 : size.width * 0.151,
                   child: myContainer(state.officeStreak, 1),
                 ),

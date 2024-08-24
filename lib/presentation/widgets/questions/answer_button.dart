@@ -12,15 +12,15 @@ class AnswerButton extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     final isTablet = size.width > 600;
-    final isTabletPlus = size.width >= 800; 
+    final isEspecialHeight = size.height < 800;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      padding: EdgeInsets.symmetric(vertical: isEspecialHeight ? size.width * 0.01 : isTablet ? size.width * 0.02 : size.width * 0.02, horizontal: 16.0),
       child: ElevatedButton(
         onPressed: onPressed,
         child: Padding(
           padding: EdgeInsets.all( isTablet ? size.width * 0.02 : size.width * 0.02),
-          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTabletPlus ? 28 : isTablet ? 17.5 : 16),),
+          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTablet ? 22 : 16), textAlign: TextAlign.center, ),
         ),
       ),
     );

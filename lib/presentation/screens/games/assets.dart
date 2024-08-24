@@ -21,14 +21,17 @@ class Assets {
   static const btnContinue         = 'assets/images/games/flappy/buttonContinue.png';
   static const requirementMessage  = 'assets/images/games/flappy/requirementMessage.png';
 
-  static const cardQuestionShool   = 'assets/images/games/questions/cardQuestion_1.png';
-  static const cardQuestionWork    = 'assets/images/games/questions/cardQuestion_2.png';
-  static const cardBoxQuestion     = 'assets/images/games/questions/cardBoxQuestion.png';
-  static const cardBoxQuestion_1   = 'assets/images/games/questions/cardBoxQuestion_1.png';
-  static const tittleQuestions     = 'assets/images/games/questions/tittleQuestions.png';
-  static const questionsCompleted     = 'assets/images/games/questions/questionsCompleted.png';
-  static const questionsBackground = 'assets/images/games/questions/questionsBackground.jpg';
+  static const cardQuestionShool         = 'assets/images/games/questions/cardQuestion_1.png';
+  static const cardQuestionWork          = 'assets/images/games/questions/cardQuestion_2.png';
+  static const cardBoxQuestion           = 'assets/images/games/questions/cardBoxQuestion.png';
+  static const cardBoxQuestion_1         = 'assets/images/games/questions/cardBoxQuestion_1.png';
+  static const tittleQuestions           = 'assets/images/games/questions/tittleQuestions.png';
+  static const questionsCompleted        = 'assets/images/games/questions/questionsCompleted.png';
+  static const questionsBackground       = 'assets/images/games/questions/questionsBackground.jpg';
   static const questionsBackgroundTablet = 'assets/images/games/questions/questionsBackground_tablet.jpg';
+  static const modalQuestions = 'assets/images/games/questions/modalQuestions.png';
+  static const modalQuestions_2 = 'assets/images/games/questions/modalQuestions_2.png';
+  static const modalQuestions_3 = 'assets/images/games/questions/modalQuestions_3.png';
   
   static const flying    = 'fly.wav';
   static const collision = 'collision.wav';

@@ -42,6 +42,14 @@ class HomeQuestions extends StatelessWidget {
                     _MenuQuestionItem(
                       height: size.height * 0.22, 
                       nameImage: 'tittle-gameofquestion.png',
+                      onPressed: (){
+                        showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const ModalQuestions();
+                        },
+                      );
+                      },
                     ), 
                     _MenuQuestionItem(
                       height: size.height * 0.28, 

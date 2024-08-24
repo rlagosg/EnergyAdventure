@@ -56,6 +56,8 @@ class QuestionViewState extends State<QuestionView> {
 
     final size = MediaQuery.of(context).size;
     final isTablet = size.width > 600;
+    final isTabletPlus = size.width >= 800; 
+    
     final isFinal = context.read<GameQuestionsCubit>().state.currentQuestionIndex == context.read<GameQuestionsCubit>().state.questions.length - 1;
 
     final cardCategory = context.read<GameCubit>().state.currentCategory == CategoryQuest.school ? Assets.cardQuestionShool : Assets.cardQuestionWork;
@@ -64,13 +66,13 @@ class QuestionViewState extends State<QuestionView> {
 
 
     TextStyle textTitle = TextStyle(
-      fontSize: isTablet ? 26 : null, 
+      fontSize: isTabletPlus ? 30 : isTablet ? 26 : null, 
       color: const Color.fromARGB(255, 36, 18, 66),
       fontFamily: 'Comic',
     );
 
     TextStyle textExplanation = TextStyle(
-      fontSize: isTablet ? 20 : null, 
+      fontSize: isTabletPlus ? 24 : isTablet ? 20 : null, 
       fontFamily: 'Comic',
     );
 
@@ -105,21 +107,33 @@ class QuestionViewState extends State<QuestionView> {
     
   }
 
+  double scaleSizeHeight({double? tablePlus, double? tablet, double base = 1}) {
+    return tablePlus != null && isTabletPlus ? size.height * tablePlus :
+           tablet != null && isTablet ? size.height * tablet :
+           size.height * base;
+  }
+
+  double scaleSizeWidth({double? tablePlus, double? tablet, double base = 1}) {
+    return tablePlus != null && isTabletPlus ? size.width * tablePlus :
+           tablet != null && isTablet ? size.width * tablet :
+           size.width * base;
+  }
+
   return Stack(
     children: [
       const ProgressBar(),
 
       // imagen del card
       Positioned(
-        left: isTablet ? size.width * 0.12 : size.width * 0.05,
-        top: size.height * 0.15,
-        child: Image.asset(cardCategory , width: isTablet ? size.width * 0.75 : size.width * 0.9, fit: BoxFit.cover,)
+        left: scaleSizeWidth(tablet: 0.12, base: 0.05 ),
+        top: scaleSizeHeight(base: 0.15),
+        child: Image.asset(cardCategory , width: scaleSizeWidth(tablet: 0.75, base: 0.9),fit: BoxFit.cover,)
       ),
 
       // Imagen Personaje
       Positioned(
-        left: isTablet ? size.width * 0.36 : size.width * 0.32,
-        top:  isTablet ? size.height * 0.215:  size.height * 0.20,
+        left: scaleSizeWidth(tablet: 0.36, base: 0.32),
+        top: scaleSizeHeight(tablet: 0.215, base: 0.20 ),
         child: AnimatedSwitcher(
           duration: const Duration(seconds: 2),
           transitionBuilder: (Widget child, Animation<double> animation) {
@@ -131,16 +145,16 @@ class QuestionViewState extends State<QuestionView> {
           child: Image.asset(
             'assets/images/$_currentImageIndex.png',
             key: ValueKey<int>(_currentImageIndex),
-            height: size.height * 0.28,
+            height: scaleSizeHeight(base: 0.28 ),
           ),
         ),
       ),
 
       // imagen del box de pregunta
       Positioned(
-        left: isTablet ? size.width * 0.16 : size.width * 0.10,
-        top: isTablet ? size.height * 0.432 : size.height * 0.41,
-        child: Image.asset(Assets.cardBoxQuestion_1, width:  isTablet ? size.width * 0.67 : size.width * 0.8, fit: BoxFit.cover,)
+        left: scaleSizeWidth(tablet:  0.16, base: 0.10),
+        top: scaleSizeHeight(tablet: 0.432, base: 0.41),
+        child: Image.asset(Assets.cardBoxQuestion_1, width: scaleSizeWidth(tablet: 0.67, base: 0.8), fit: BoxFit.cover,)
       ),
 
       Column(
@@ -148,22 +162,22 @@ class QuestionViewState extends State<QuestionView> {
         children: [
 
           // Espacio inicial
-          SizedBox(height: isTablet ? size.height * 0.385 : size.height * 0.322 ),     
+           SizedBox(height: scaleSizeHeight(tablePlus: 0.383, tablet: 0.388, base: 0.322)),      
 
           // Pregunta
           Padding(
-            padding: EdgeInsets.only(left: isTablet ? size.width * 0.195 : size.width * 0.142, right: isTablet ? size.width * 0.210 : 40, ),
+            padding: EdgeInsets.only(left: scaleSizeWidth(tablet: 0.195, base: 0.119 ), right: scaleSizeWidth(tablet: 0.210, base: 0.12)),
             child: FadeIn(
               child: Container(
                 //color: Colors.amber,
-                height: isTablet ? size.height * 0.18 : size.height * 0.175,
-                width: isTablet ? size.width * 0.60 : size.width * 0.72,  
+                height: scaleSizeHeight(tablePlus: 0.21, tablet: 0.18, base: 0.175 ),
+                width: scaleSizeWidth(tablet: 0.60, base: 0.90),
                 alignment: Alignment.centerRight, 
                 child: Text(
                   widget.question.content,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: isTablet ? 22 : 19.5, 
+                    fontSize: isTabletPlus ? 30 : isTablet ? 20 : 19.5, 
                     fontWeight: FontWeight.bold, 
                     fontFamily: 'Comic',
                     color: const Color.fromARGB(255, 59, 31, 108)
@@ -173,7 +187,7 @@ class QuestionViewState extends State<QuestionView> {
             ),
           ),
 
-          SizedBox(height: isTablet ? size.height * 0.05 : size.height * 0.04 ),
+          SizedBox(height: scaleSizeHeight(tablet: 0.035, base: 0.04)),
 
           // Respuestas
           ...widget.question.options.map((option) => AnswerButton(
@@ -201,3 +215,5 @@ class QuestionViewState extends State<QuestionView> {
     );
   }
 }
+
+

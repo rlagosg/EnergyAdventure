@@ -1,3 +1,14 @@
+# Ignorar archivos generados en Linux
+linux/flutter/generated_plugin_registrant.*
+linux/flutter/generated_plugins.cmake
+
+# Ignorar archivos generados en macOS
+macos/Flutter/GeneratedPluginRegistrant.swift
+
+# Ignorar archivos generados en Windows
+windows/flutter/generated_plugin_registrant.*
+windows/flutter/generated_plugins.cmake
+
 # Miscellaneous
 *.class
 *.log

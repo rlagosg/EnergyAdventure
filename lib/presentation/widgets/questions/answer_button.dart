@@ -12,6 +12,7 @@ class AnswerButton extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     final isTablet = size.width > 600;
+    final isTabletPlus = size.width >= 800; 
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -19,7 +20,7 @@ class AnswerButton extends StatelessWidget {
         onPressed: onPressed,
         child: Padding(
           padding: EdgeInsets.all( isTablet ? size.width * 0.02 : size.width * 0.02),
-          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTablet ? 22 : 16),),
+          child: Text(option, style: TextStyle(fontFamily: 'Comic', fontSize: isTabletPlus ? 28 : isTablet ? 17.5 : 16),),
         ),
       ),
     );

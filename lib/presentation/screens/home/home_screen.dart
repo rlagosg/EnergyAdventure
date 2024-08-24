@@ -66,10 +66,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
             
             Positioned.fill(
             child: 
-              Image.asset( Assets.homeBackground,
+              Image.asset( isTablet ? Assets.homeBackgroundTablet : Assets.homeBackground,
                 fit: BoxFit.cover, 
-                //width: size.width * 1,
-                //height: size.height * 1,
               ),
             ),
 

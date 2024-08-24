@@ -13,18 +13,31 @@ class ProgressBar extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     final isTablet = size.width > 600; 
+    final isTabletPlus = size.width >= 800; 
+
+    double scaleSizeHeight({double? tablePlus, double? tablet, double base = 1}) {
+      return tablePlus != null && isTabletPlus ? size.height * tablePlus :
+            tablet != null && isTablet ? size.height * tablet :
+            size.height * base;
+    }
+
+    double scaleSizeWidth({double? tablePlus, double? tablet, double base = 1}) {
+      return tablePlus != null && isTabletPlus ? size.width * tablePlus :
+            tablet != null && isTablet ? size.width * tablet :
+            size.width * base;
+    }
 
     return Stack(
       children: [
         Positioned(
-          top: isTablet ? size.height * 0.03 : size.height * 0.036,
-          left: isTablet ? size.width * 0.10 : size.width * 0.049,
-          child: Image.asset(Assets.tittleQuestions, width: isTablet ? size.width * 0.8 : size.width * 0.9,)
+          top: scaleSizeHeight( tablet: 0.03, base: 0.036 ),
+          left: scaleSizeWidth( tablet: 0.10, base: 0.049 ),
+          child: Image.asset(Assets.tittleQuestions, width: scaleSizeWidth(tablet: 0.8, base:  0.9))
         ),
 
         Column(
           children: [
-            SizedBox(height: isTablet ? 125 : 93),
+            SizedBox(height: scaleSizeHeight(tablet: 0.098, base: 0.095 )),
             const ControlledProgresIndicator()
           ],
         ),
@@ -45,7 +58,7 @@ class ControlledProgresIndicator extends StatelessWidget {
     final isTablet = size.width > 600; 
     
     return Padding(
-          padding: EdgeInsets.symmetric(horizontal: isTablet ? size.width * 0.14 : 50),
+          padding: EdgeInsets.symmetric(horizontal: isTablet ? size.width * 0.17 : size.width * 0.13),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:animate_do/animate_do.dart';
 import 'package:confetti/confetti.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
+import 'package:energyadventure/presentation/widgets/ui/back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,19 +45,36 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
   }
 
   void _showCongratulationsDialog() {
+
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600;
+    final isTabletPlus = size.width >= 800; 
+
+    TextStyle textTitle = TextStyle(
+      fontSize: isTabletPlus ? 30 : isTablet ? 26 : null, 
+      color: const Color.fromARGB(255, 36, 18, 66),
+      fontFamily: 'Comic',
+    );
+
+    TextStyle textExplanation = TextStyle(
+      fontSize: isTabletPlus ? 24 : isTablet ? 20 : null, 
+      fontFamily: 'Comic',
+    );
+
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('¡Felicitaciones!'),
-          content: const Text(
-            'Has completado todas las preguntas. ¡Buen trabajo!\n\n'
+          title: Text('¡Felicitaciones!', style: textTitle,),
+          content: Text(
+            'Has completado esta ronda de preguntas. ¡Buen trabajo!\n\n'
             'Recuerda que el ahorro de energía es fundamental para proteger nuestro planeta. '
             'Apaga las luces y dispositivos cuando no los estés usando y opta por electrodomésticos eficientes.',
+            style: textExplanation,
           ),
           actions: <Widget>[
             TextButton(
-              child: const Text('Volver al inicio'),
+              child: Text('Volver al inicio', style: textExplanation),
               onPressed: () {
                 Navigator.of(context).pop(); // Cierra el diálogo
                 context.go('/home_questions'); // Redirige a la pantalla de inicio usando GoRouter
@@ -93,14 +111,21 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
     context.read<GameCubit>().setReplacementHome(true);
     context.read<GameCubit>().updateStreak();
 
+    final size = MediaQuery.of(context).size;
+    final isTablet = size.width > 600;
+    final isTabletPlus = size.width >= 800; 
+
     return Scaffold(
       body: Stack(
         children: [
-          Positioned.fill(
+          Positioned(    
+            top: isTablet ? 0 : size.height * 0.02,
+            left: isTabletPlus ? size.width * 0.04 : isTablet ? 0.05 : size.width * -0.066,   
             child: FadeIn(
               child: Image.asset(
                 'assets/images/games/questions/Celebration-2.png',
                 fit: BoxFit.cover,
+                width: isTabletPlus ? size.width * 0.92 : isTablet ? size.width * 0.93 : size.width * 1.14
               ),
             ),
           ),
@@ -124,6 +149,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
           ),
         ],
       ),
+      floatingActionButton: const MyBackButton(),
     );
   }
 }

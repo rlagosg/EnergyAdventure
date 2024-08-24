@@ -29,7 +29,7 @@ class HomeQuestions extends StatelessWidget {
 
               Positioned.fill(
                 child: 
-                  Image.asset( Assets.questionMenu,
+                  Image.asset( isTablet ? Assets.questionsBackgroundTablet : Assets.questionsBackground,
                     fit: BoxFit.cover, 
                   ),
               ),

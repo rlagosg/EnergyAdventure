@@ -1,4 +1,3 @@
-- imagenes al menu y al menu de preguntas
 - modal al titulo de juego de preguntas
 - generacion de apk
 

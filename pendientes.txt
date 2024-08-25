@@ -2,8 +2,6 @@
 
 opcional:
 mensajes personalizados al final de cada juego
-mensaje personalizado en la pantalla modal
-sonido a respuesta incorrecta y correcta
 agregar id opcional para saber si el json ha realizado algun cambio
 
 

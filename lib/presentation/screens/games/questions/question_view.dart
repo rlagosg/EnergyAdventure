@@ -5,6 +5,7 @@ import 'package:confetti/confetti.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/blocs/cubit/games/game_questions_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -76,6 +77,13 @@ class QuestionViewState extends State<QuestionView> {
         fontSize: isTabletPlus ? 24 : isTablet ? 20 : null, 
         fontFamily: 'Comic',
       );
+
+        // Reproducir audio basado en la respuesta
+        if (isCorrect) {
+          FlameAudio.play(Assets.success);
+        } else {
+          FlameAudio.play(Assets.fail);
+        }
 
       // SnakBar
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

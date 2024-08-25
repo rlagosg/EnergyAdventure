@@ -5,7 +5,9 @@ import 'dart:math';
 import 'package:animate_do/animate_do.dart';
 import 'package:confetti/confetti.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
+import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:energyadventure/presentation/widgets/ui/back_button.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -27,6 +29,8 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
   @override
   void initState() {
     super.initState();
+
+    FlameAudio.play(Assets.celebration);
     _confettiController1.play();
     _confettiController2.play();
     _confettiController3.play();

@@ -35,6 +35,10 @@ class Assets {
   static const collision = 'collision.wav';
   static const point     = 'point.wav';
 
+  static const celebration = 'celebration.mp3';
+  static const fail        = 'fail.mp3';
+  static const success     = 'success.mp3';
+
   static const flappySlide_1 = 'assets/images/tutorials/flappy/1.png';
   static const flappySlide_2 = 'assets/images/tutorials/flappy/2.png';
   static const flappySlide_3 = 'assets/images/tutorials/flappy/3.png';

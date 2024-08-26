@@ -1,7 +1,0 @@
-- generacion de apk
-
-opcional:
-mensajes personalizados al final de cada juego
-agregar id opcional para saber si el json ha realizado algun cambio
-
-

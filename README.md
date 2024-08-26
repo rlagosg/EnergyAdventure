@@ -19,7 +19,3 @@ Para cambair el splash screen
 flutter pub run flutter_native_splash:create
 ```
 
-
-Android AAB
-```
-flutter build appbundle

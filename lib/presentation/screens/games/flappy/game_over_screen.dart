@@ -1,6 +1,7 @@
 import 'package:energyadventure/domain/entities/flappy_game/flappy_bird_game.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -58,8 +59,11 @@ class GameOverScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * 0.05),
+
+            //Boton de reinicio
             TextButton(
               onPressed: () {
+                FlameAudio.play(Assets.soundGo);
                 onRestart();
                 changeCanContinue(true); // Permite continuar después del reinicio
               },
@@ -68,8 +72,11 @@ class GameOverScreen extends StatelessWidget {
                 width: size.height * 0.20, 
               ),
             ),
+
+            //Boton de Salir
             TextButton(
               onPressed: (){ 
+                FlameAudio.play(Assets.soundBack);
                 changeCanContinue(true); // Permite continuar después de salir
                 game.destroy(); // Destruye la instancia del juego
                 superContext.replace('/');

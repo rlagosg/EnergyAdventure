@@ -1,5 +1,7 @@
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
+import 'package:energyadventure/presentation/screens/games/assets.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -53,6 +55,7 @@ class FlappyBirdGameScreen extends StatelessWidget {
                 child: PauseButton(
                   onPressed: () {
                     if (state.canContinue) {
+                      FlameAudio.play(Assets.soundPause);
                       game.showPauseMenu();
                     }
                   },

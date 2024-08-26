@@ -1,5 +1,6 @@
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -66,6 +67,9 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
         child: Stack(
           children: [
             PageView(
+              onPageChanged: (value) {
+                FlameAudio.play(Assets.soundSlide);
+              },
               controller: pageViewController,
             //physics: const BouncingScrollPhysics(),
               children: slides.map(
@@ -82,7 +86,10 @@ class _FlappyIntroScreenState extends State<FlappyIntroScreen> {
                 from: 15,
                 //delay:const Duration(seconds: 1),
                 child: TextButton(
-                  onPressed: () { context.push('/flappy_lobby_screen'); },
+                  onPressed: () { 
+                    FlameAudio.play(Assets.soundGo);
+                    context.push('/flappy_lobby_screen'); 
+                  },
                   child: Image.asset( Assets.play, height: size.height * 0.06,),
                 ),
               ),

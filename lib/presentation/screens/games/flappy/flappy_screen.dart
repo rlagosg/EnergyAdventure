@@ -1,4 +1,5 @@
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +23,8 @@ class FlappyScreen extends StatelessWidget {
         [
           GestureDetector(
           onTap: () { // Navega a la pantalla de juego FlappyBirdGameScreen
-              context.push('/flappy_game_screen');
+            FlameAudio.play(Assets.soundGo);
+            context.push('/flappy_game_screen');
           },
           child: Container(
           width: double.infinity,

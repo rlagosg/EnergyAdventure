@@ -94,6 +94,7 @@ class QuestionViewState extends State<QuestionView> {
 
       // Modal
       Future.delayed(const Duration(seconds: 1), () {
+        FlameAudio.play(Assets.soundGo);
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -101,7 +102,8 @@ class QuestionViewState extends State<QuestionView> {
             content: Text(isCorrect ? explanation : 'Recuerda... $explanation', style: textExplanation,),
             actions: [
               TextButton(
-                onPressed: () { 
+                onPressed: () {
+                  FlameAudio.play(Assets.soundBack); 
                   Navigator.of(context).pop();
                   if (isCorrect & isFinal){
                     context.pushReplacement('/congratulations');
@@ -172,7 +174,7 @@ class QuestionViewState extends State<QuestionView> {
           children: [
 
             // Espacio inicial
-            SizedBox(height: isEspecialHeight ? size.height * 0.345 : scaleSizeHeight(tablePlus: 0.410, tablet: 0.410, base: 0.335)),   
+            SizedBox(height: isEspecialHeight ? size.height * 0.345 : scaleSizeHeight(tablePlus: 0.410, tablet: 0.410, base: 0.345)),   
 
             // Pregunta
             Padding(

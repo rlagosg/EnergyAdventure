@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
  
 class ModalQuestions extends StatelessWidget {
@@ -10,6 +11,7 @@ class ModalQuestions extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final isTablet = size.width > 600;
     final isEspecialHeight = size.height < 800;
+    FlameAudio.play(Assets.soundGo);
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -26,9 +28,10 @@ class ModalQuestions extends StatelessWidget {
                 // Botón de salir
                 Positioned(
                   bottom: isEspecialHeight ? size.height * 0.175 : isTablet ? size.height * 0.022 : size.height * 0.169 ,
-                  left: isEspecialHeight ? size.width * 0.26 : isTablet ? size.width * 0.25 : size.width * 0.30,
+                  left: isEspecialHeight ? size.width * 0.26 : isTablet ? size.width * 0.25 : size.width * 0.28,
                   child: ElevatedButton(
                     onPressed: () {
+                      FlameAudio.play(Assets.soundBack);
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(

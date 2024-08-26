@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/domain/entities/entities.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -47,6 +48,20 @@ class _HomeQuestionsState extends State<HomeQuestions> {
     final isTablet = size.width > 600; 
     final replacement = context.watch<GameCubit>().state.replacementHome;
 
+    void goAndPlay(String sound, String route) {
+      FlameAudio.play(sound);
+      context.push(route);
+    }
+
+    void showIntroModal() {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const ModalQuestions();
+        },
+      );
+    }
+
     return Scaffold(
       body: Center(
         child: FadeIn(
@@ -68,29 +83,18 @@ class _HomeQuestionsState extends State<HomeQuestions> {
                     _MenuQuestionItem(
                       height: size.height * 0.22, 
                       nameImage: 'tittle-gameofquestion.png',
-                      onPressed: (){
-                        showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return const ModalQuestions();
-                        },
-                      );
-                      },
+                      onPressed: showIntroModal,
                     ), 
                     _MenuQuestionItem(
                       height: size.height * 0.28, 
                       nameImage: 'home-school.png',
-                      onPressed: () {
-                        context.push('/questions/${CategoryQuest.school}'); 
-                      },
+                      onPressed: () => goAndPlay(Assets.soundGo, '/questions/${CategoryQuest.school}'),
                     ), 
                     SizedBox(height: size.height * 0.04),
                     _MenuQuestionItem(
                       height: size.height * 0.28, 
                       nameImage: 'home-work.png',
-                      onPressed: () {
-                        context.push('/questions/${CategoryQuest.office}');
-                       },
+                      onPressed: () => goAndPlay(Assets.soundGo, '/questions/${CategoryQuest.office}'),
                     ),
                   ]
                 ),
@@ -120,7 +124,7 @@ class _MenuQuestionItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       child: TextButton(
-        onPressed: onPressed ?? () {},
+        onPressed: onPressed ?? (){},
         child: Image.asset(
           'assets/images/games/questions/$nameImage',
            height: height,

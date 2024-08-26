@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/presentation/blocs/cubit/game_cubit.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,6 +20,8 @@ class RequirementMessage extends StatelessWidget {
       fontFamily: 'Comic', 
       color: const Color.fromARGB(255, 131, 115, 170),
     );
+
+    FlameAudio.play(Assets.soundGo);
 
     Container myContainer(int counter, int streak) {
       return Container(
@@ -46,14 +49,14 @@ class RequirementMessage extends StatelessWidget {
       
                 // Contador de rachas de school
                 Positioned(
-                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.299,
+                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.310,
                   left: isTablet ? size.width * 0.185 : size.width * 0.168,
                   child: myContainer(state.schoolStreak, 2),
                 ),
       
                 // Contador de rachas de office
                 Positioned(
-                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.299,
+                  bottom: isEspecialHeight ? size.height * 0.312 : isTablet ? size.height * 0.145 : size.height * 0.310,
                   right: isTablet ? size.width * 0.167 : size.width * 0.151,
                   child: myContainer(state.officeStreak, 1),
                 ),
@@ -64,6 +67,7 @@ class RequirementMessage extends StatelessWidget {
                   left: isTablet ? size.width * 0.41 : size.width * 0.45,
                   child: ElevatedButton(
                     onPressed: () {
+                      FlameAudio.play(Assets.soundBack);
                       Navigator.of(context).pop();
                     },
                     style: ElevatedButton.styleFrom(

@@ -39,6 +39,11 @@ class Assets {
   static const fail        = 'fail.mp3';
   static const success     = 'success.mp3';
 
+  static const soundGo     = 'go.mp3';
+  static const soundBack   = 'back.mp3';
+  static const soundPause   = 'pause.mp3';
+  static const soundSlide   = 'flipcard.mp3';
+
   static const flappySlide_1 = 'assets/images/tutorials/flappy/1.png';
   static const flappySlide_2 = 'assets/images/tutorials/flappy/2.png';
   static const flappySlide_3 = 'assets/images/tutorials/flappy/3.png';

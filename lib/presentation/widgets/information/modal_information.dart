@@ -1,11 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
  
 void modalInformation(BuildContext context) {
   final size = MediaQuery.of(context).size;
+  FlameAudio.play(Assets.soundGo);
 
   showDialog(
     context: context,
@@ -34,6 +36,7 @@ void modalInformation(BuildContext context) {
                   color: const Color.fromARGB(255, 60, 121, 151),
                 ),
                 onPressed: () {
+                  FlameAudio.play(Assets.soundBack);
                   context.pop();
                 },
               ),

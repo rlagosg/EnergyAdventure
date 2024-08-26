@@ -80,6 +80,7 @@ class CongratulationsScreenState extends State<CongratulationsScreen> {
             TextButton(
               child: Text('Volver al inicio', style: textExplanation),
               onPressed: () {
+                FlameAudio.play(Assets.soundBack);
                 Navigator.of(context).pop(); // Cierra el diálogo
                 context.go('/home_questions'); // Redirige a la pantalla de inicio usando GoRouter
               },

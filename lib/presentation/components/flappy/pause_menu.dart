@@ -1,5 +1,6 @@
 import 'package:energyadventure/domain/entities/entities.dart';
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -30,6 +31,7 @@ class PauseMenu extends StatelessWidget {
             left:size.width * 0.13,
             child: ElevatedButton(
               onPressed: () {
+                FlameAudio.play(Assets.soundPause);
                 game.hidePauseMenu();
               },
               style: ElevatedButton.styleFrom(
@@ -50,6 +52,7 @@ class PauseMenu extends StatelessWidget {
             left:size.width * 0.13,
             child: ElevatedButton(
               onPressed: () {
+                FlameAudio.play(Assets.soundBack);
                 game.destroy(); // Destruye la instancia del juego
                 context.replace('/'); // Regresar a la pantalla anterior
               },

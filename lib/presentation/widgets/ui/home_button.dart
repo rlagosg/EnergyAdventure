@@ -1,4 +1,5 @@
 import 'package:energyadventure/presentation/screens/games/assets.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,7 +16,10 @@ class HomeButton extends StatelessWidget {
 
     return  TextButton(
       child: Image.asset( Assets.home, height: size.height * 0.07,),
-      onPressed: () { replacement == true ? context.pushReplacement('/') : context.pop(); }          
+      onPressed: () { 
+        FlameAudio.play(Assets.soundBack);
+        replacement == true ? context.pushReplacement('/') : context.pop();  
+      }          
     );
   }
 }

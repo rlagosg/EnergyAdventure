@@ -6,14 +6,14 @@ class QuestionMapper {
 
   /* Mapper para Firebase */
   static Question firebaseQuestion(FirebaseResponse question) => Question(
-    answer: question.answer, 
-    category: question.category, 
-    content: question.content, 
-    explication: question.explication, 
-    id: question.id, 
-    level: question.level, 
-    options: question.options, 
-    type: question.type
+    answer      : question.answer, 
+    category    : question.category, 
+    content     : question.content, 
+    explication : question.explication, 
+    id          : question.id, 
+    level       : question.level, 
+    options     : question.options, 
+    type        : question.type
   );
 
 }

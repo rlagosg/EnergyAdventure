@@ -126,9 +126,9 @@ class GameCubit extends Cubit<GameState> {
     setCurrentCategory(category);
 
     final categoryFilters = {
-      CategoryQuest.office: [CategoryQuest.office, CategoryQuest.home],
-      CategoryQuest.school: [CategoryQuest.school, CategoryQuest.home],
-      CategoryQuest.climate: [CategoryQuest.climate, CategoryQuest.home],
+      CategoryQuest.office  : [CategoryQuest.office,  CategoryQuest.home],
+      CategoryQuest.school  : [CategoryQuest.school,  CategoryQuest.home],
+      CategoryQuest.climate : [CategoryQuest.climate, CategoryQuest.home],
     };
 
     final filters = categoryFilters[category];
@@ -150,9 +150,8 @@ class GameCubit extends Cubit<GameState> {
     int maxQuestions = questions.length < 10 ? questions.length : 10;
 
     while (selecteds.length < maxQuestions) {
-      var number = random.nextInt(questions.length); // Genera un número entre 0 y questions.length - 1
+      var number = random.nextInt(questions.length);
       var question = questions[number];
-      //print(number); // Esto es solo para depuración, puedes removerlo si no lo necesitas
 
       if (!selecteds.contains(question)) {
         selecteds.add(question);

@@ -10,7 +10,7 @@ class FlappyLobbyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: FlappyScreen(), // Aquí simplemente muestras la pantalla de lobby
+      body: FlappyScreen(),
     );
   }
 }

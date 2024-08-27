@@ -37,10 +37,10 @@ class FlappyScreen extends StatelessWidget {
           ),
           child: Center(
             child: SizedBox(
-              height: size.height * 0.25, // Ajusta el alto de la imagen
+              height: size.height * 0.25,
               child: Image.asset(
                   Assets.play,
-                  fit: BoxFit.cover, // magen con su tamaño original
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

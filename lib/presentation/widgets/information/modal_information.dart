@@ -21,8 +21,8 @@ void modalInformation(BuildContext context) {
               children: [
                 Image.asset(
                   Assets.information,
-                  height: size.width * 0.88, // Ajusta el alto de la imagen
-                  fit: BoxFit.contain, // Asegura que la imagen mantenga su proporción
+                  height: size.width * 0.88, 
+                  fit: BoxFit.contain,
                 ),
               ],
             ),

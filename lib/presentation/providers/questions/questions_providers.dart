@@ -1,11 +1,9 @@
 
-
 import 'package:energyadventure/presentation/providers/questions/questions_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../domain/entities/entities.dart';
 
-//https://cursos.devtalles.com/courses/take/flutter-movil-cero-a-experto/lessons/42922738-nowplaying-provider-y-notifier
 
 final getQuestionsProvider = StateNotifierProvider<QuestionsNotifier, List<Question>>((ref) {
 

@@ -21,25 +21,25 @@ class FirebaseResponse {
     });
 
     factory FirebaseResponse.fromJson(Map<String, dynamic> json) => FirebaseResponse(
-        answer: json["answer"],
-        category: json["category"],
-        content: json["content"],
-        explication: json["explication"],
-        id: json["id"],
-        level: json["level"],
-        options: List<String>.from(json["options"].map((x) => x)),
-        type: json["type"],
+        answer      : json["answer"],
+        category    : json["category"],
+        content     : json["content"],
+        explication : json["explication"],
+        id          : json["id"],
+        level       : json["level"],
+        options     : List<String>.from(json["options"].map((x) => x)),
+        type        : json["type"],
     );
 
     Map<String, dynamic> toJson() => {
-        "answer": answer,
-        "category":category,
-        "content": content,
-        "explication": explication,
-        "id": id,
-        "level": level,
-        "options": List<dynamic>.from(options.map((x) => x)),
-        "type": type,
+        "answer"      : answer,
+        "category"    : category,
+        "content"     : content,
+        "explication" : explication,
+        "id"          : id,
+        "level"       : level,
+        "options"     : List<dynamic>.from(options.map((x) => x)),
+        "type"        : type,
     };
 }
 

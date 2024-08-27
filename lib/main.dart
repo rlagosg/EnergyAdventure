@@ -61,16 +61,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-/* 
-  runApp(
-    ProviderScope( child: BlocProvider(
-      create: ( _ ) => GameCubit(),
-      child: const MainApp(),
-    ) )
-  );
-
-  runApp(
-    const ProviderScope( child: MainApp() )
-  );
- */

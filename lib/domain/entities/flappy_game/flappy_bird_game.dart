@@ -61,7 +61,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
 
   TextComponent buildRecord() {
     return TextComponent(
-      position: Vector2(size.x / 2, size.y / 2 * 0.1), // Posición diferente para no superponer el texto
+      position: Vector2(size.x / 2, size.y / 2 * 0.1),
       anchor: Anchor.center,
       textRenderer: TextPaint(
         style: const TextStyle(
@@ -127,7 +127,7 @@ class FlappyBirdGame extends FlameGame with TapDetector, HasCollisionDetection {
   }
 
   void destroy() {
-    // Liberar recursos aquí si es necesario
+    // Liberar recursos
     removeAll(children);
     overlays.clear();
     resumeEngine();

@@ -71,10 +71,5 @@ class Bird extends SpriteGroupComponent<BirdMovement> with HasGameRef<FlappyBird
     game.isHit = true;
     gameRef.overlays.add('gameOver');
     gameRef.pauseEngine();
-
-    // Actualiza el estado del cubit para indicar que no se puede continuar
-    //final gameCubit = context.read<GameCubit>();
-    //gameCubit.setContinue(false);
-
   }
 }
